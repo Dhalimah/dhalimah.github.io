@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Soil Nutrient & Suitability Mapping — Ikere, Oyo State | Halimat Akanbi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0d1b27; --surface: #152436; --surface2: #1c2f44;
+      --border: rgba(100,200,155,0.22); --green: #6ddba0; --gold: #d4bb7d;
+      --blue: #5ba8d4; --text: #edf3ef; --text-muted: #92b8a5; --text-dim: #4e7060;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-mono: 'DM Mono', monospace; --font-sans: 'Outfit', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(109,219,160,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(109,219,160,0.04) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.2rem 3rem; display: flex; align-items: center; justify-content: space-between; background: rgba(13,27,39,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: var(--font-mono); font-size: 0.75rem; color: var(--green); letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; }
+    .nav-back { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.3s; }
+    .nav-back:hover { color: var(--green); }
+
+    /* HERO */
+    .project-hero { padding: 9rem 3rem 5rem; position: relative; z-index: 1; border-bottom: 1px solid var(--border); }
+    .project-hero-inner { max-width: 1100px; margin: 0 auto; }
+    .project-tag { font-family: var(--font-mono); font-size: 0.65rem; color: var(--green); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.8rem; }
+    .project-tag::before { content: ''; width: 2rem; height: 1px; background: var(--green); }
+    .project-hero h1 { font-family: var(--font-serif); font-size: clamp(2rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; margin-bottom: 1.5rem; max-width: 860px; }
+    .project-hero h1 em { font-style: italic; color: var(--green); }
+    .project-meta-strip { display: flex; flex-wrap: wrap; gap: 2rem; }
+    .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+    .meta-label { font-family: var(--font-mono); font-size: 0.58rem; color: var(--text-dim); letter-spacing: 0.15em; text-transform: uppercase; }
+    .meta-value { font-size: 0.9rem; color: var(--text-muted); }
+    .stats-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 3rem; }
+    .stat-card { background: var(--surface); padding: 1.5rem; text-align: center; }
+    .stat-card .num { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 300; display: block; line-height: 1; margin-bottom: 0.4rem; }
+    .num.green { color: var(--green); } .num.gold { color: var(--gold); } .num.blue { color: var(--blue); }
+    .stat-card .slabel { font-family: var(--font-mono); font-size: 0.58rem; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; display: block; }
+
+    /* CONTENT */
+    .content-section { position: relative; z-index: 1; padding: 5rem 3rem; border-bottom: 1px solid var(--border); }
+    .content-section.surface { background: var(--surface); }
+    .content-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-family: var(--font-mono); font-size: 0.62rem; color: var(--green); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.8rem; }
+    .section-label::after { content: ''; width: 2rem; height: 1px; background: var(--green); }
+    .section-title { font-family: var(--font-serif); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 300; margin-bottom: 2rem; line-height: 1.2; }
+    .prose { font-size: 0.97rem; color: var(--text-muted); line-height: 1.9; max-width: 750px; }
+    .prose p { margin-bottom: 1.2rem; } .prose p:last-child { margin-bottom: 0; }
+    .prose strong { color: var(--text); font-weight: 500; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .two-col .prose { max-width: 100%; }
+
+    /* MAP GRIDS */
+    .maps-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem; }
+    .maps-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+    .map-card { border: 1px solid var(--border); background: var(--surface2); overflow: hidden; transition: border-color 0.3s; }
+    .map-card:hover { border-color: rgba(109,219,160,0.4); }
+    .map-card img { width: 100%; height: 320px; object-fit: cover; object-position: center top; display: block; transition: transform 0.4s; cursor: zoom-in; }
+    .map-card.tall img { height: 420px; }
+    .map-card:hover img { transform: scale(1.02); }
+    .map-caption { padding: 0.9rem 1.2rem; border-top: 1px solid var(--border); }
+    .map-type { font-family: var(--font-mono); font-size: 0.58rem; color: var(--green); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.2rem; }
+    .map-title { font-size: 0.88rem; color: var(--text); }
+    .map-sub { font-size: 0.77rem; color: var(--text-muted); margin-top: 0.15rem; }
+
+    /* FULL WIDTH MAP */
+    .map-full { border: 1px solid var(--border); background: var(--surface2); overflow: hidden; margin-top: 2rem; }
+    .map-full img { width: 100%; display: block; cursor: zoom-in; }
+    .map-full-caption { padding: 1rem 1.5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+
+    /* METHOD BOX */
+    .method-box { background: var(--surface2); border: 1px solid var(--border); border-left: 3px solid var(--green); padding: 1.8rem 2rem; margin-top: 2rem; }
+    .method-box h4 { font-family: var(--font-mono); font-size: 0.65rem; color: var(--green); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.8rem; }
+    .method-box p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; }
+    .method-box strong { color: var(--text); font-weight: 500; }
+
+    /* NUTRIENT TABLE */
+    .nutrient-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; font-size: 0.85rem; }
+    .nutrient-table th { font-family: var(--font-mono); font-size: 0.58rem; color: var(--text-dim); letter-spacing: 0.12em; text-transform: uppercase; padding: 0.8rem 1rem; text-align: left; background: var(--surface2); border-bottom: 1px solid var(--border); }
+    .nutrient-table td { padding: 0.8rem 1rem; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+    .nutrient-table tr:last-child td { border-bottom: none; }
+    .nutrient-table tr:hover td { background: var(--surface2); }
+    .nutrient-table td:first-child { font-family: var(--font-mono); font-size: 0.68rem; color: var(--green); }
+
+    .tools-wrap { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .tool-tag { font-family: var(--font-mono); font-size: 0.65rem; padding: 0.4rem 0.9rem; border: 1px solid var(--border); color: var(--text-muted); letter-spacing: 0.06em; border-radius: 1px; transition: all 0.2s; }
+    .tool-tag:hover { border-color: var(--green); color: var(--green); }
+
+    .findings-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 1.5rem; }
+    .finding-card { background: var(--surface); padding: 1.8rem; }
+    .finding-num { font-family: var(--font-serif); font-size: 1.8rem; font-weight: 300; color: var(--gold); display: block; margin-bottom: 0.5rem; }
+    .finding-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+
+    .back-section { position: relative; z-index: 1; padding: 3rem; text-align: center; }
+    .back-btn { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.8rem 2rem; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); border: 1px solid var(--border); text-decoration: none; transition: all 0.3s; border-radius: 1px; }
+    .back-btn:hover { border-color: var(--green); color: var(--green); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .project-tag { animation: fadeUp 0.5s ease both; }
+    .project-hero h1 { animation: fadeUp 0.5s ease 0.1s both; }
+    .project-meta-strip { animation: fadeUp 0.5s ease 0.2s both; }
+    .stats-row { animation: fadeUp 0.5s ease 0.3s both; }
+
+    @media (max-width: 768px) {
+      nav, .project-hero, .content-section, .back-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .two-col { grid-template-columns: 1fr; gap: 2rem; }
+      .maps-grid-2, .maps-grid-3 { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .findings-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">HDA</a>
+    <a href="index.html" class="nav-back">← Back to Portfolio</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="project-hero">
+    <div class="project-hero-inner">
+      <div class="project-tag">Precision Agriculture · Soil Science · GIS</div>
+      <h1>Soil Nutrient &amp; Land Suitability Mapping<br><em>Ikere Area, Oyo State</em></h1>
+      <div class="project-meta-strip">
+        <div class="meta-item"><span class="meta-label">Study Area</span><span class="meta-value">Ikere Area, Oyo State</span></div>
+        <div class="meta-item"><span class="meta-label">Scale</span><span class="meta-value">1:50,000</span></div>
+        <div class="meta-item"><span class="meta-label">Sample Grid</span><span class="meta-value">700m spacing — 139 sample points</span></div>
+        <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">IAR&T, Obafemi Awolowo University</span></div>
+        <div class="meta-item"><span class="meta-label">Year</span><span class="meta-value">2025</span></div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-card"><span class="num green">139</span><span class="slabel">Soil sample points</span></div>
+        <div class="stat-card"><span class="num gold">5</span><span class="slabel">Nutrient parameters</span></div>
+        <div class="stat-card"><span class="num blue">3</span><span class="slabel">Crop suitability maps</span></div>
+        <div class="stat-card"><span class="num green">6,770</span><span class="slabel">Hectares surveyed</span></div>
+        <div class="stat-card"><span class="num gold">14</span><span class="slabel">Maps produced</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="content-section">
+    <div class="content-inner">
+      <div class="section-label">Overview</div>
+      <h2 class="section-title">Background & Objectives</h2>
+      <div class="two-col">
+        <div class="prose">
+          <p>This comprehensive land evaluation survey was carried out for IAR&T across the Ikere area of Oyo State to support agricultural planning for a proposed farmland. The study covered approximately <strong>6,770 hectares</strong> sampled at a 700m grid spacing, yielding 139 georeferenced soil sample points.</p>
+          <p>The analysis characterized the soil's physical and chemical properties — nitrogen, phosphorus, potassium, organic carbon, calcium, soil depth, and texture — and translated these into practical land suitability assessments for three priority crops: <strong>maize, rice, and soybean</strong>. An erosion risk assessment and fertility capability classification were also produced.</p>
+        </div>
+        <div class="prose">
+          <p>All spatial interpolation was performed using <strong>Inverse Distance Weighting (IDW)</strong>. IDW was preferred over kriging because it preserves actual measured values at sample locations without over-smoothing, faithfully representing the field reality. Kriging applies statistical smoothing that can mask localized nutrient variability which is agronomically critical for site-specific management decisions.</p>
+          <p>The geological and hydrological context of the study area — dominated by Migmatite with minor occurrences of Fine and Medium-grained Biotite granite, Silicified Sheared rocks, and undifferentiated Schist — directly influences soil parent material and therefore nutrient distribution across the landscape.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOCATION & GEOLOGY -->
+  <div class="content-section surface">
+    <div class="content-inner">
+      <div class="section-label">Study Area</div>
+      <h2 class="section-title">Location & geological context</h2>
+      <div class="maps-grid-2">
+        <div class="map-card tall">
+          <img src="soil_location.jpg" alt="Location Map of Proposed Farmland, Ikere Area" />
+          <div class="map-caption">
+            <div class="map-type">Location</div>
+            <div class="map-title">Location Map — Proposed Farmland, Ikere Area</div>
+            <div class="map-sub">Elevation: 232–351m · 5 elevation classes · 700m sample grid</div>
+          </div>
+        </div>
+        <div class="map-card tall">
+          <img src="soil_geology.jpg" alt="Geological and Hydrological Map, Ikere Area" />
+          <div class="map-caption">
+            <div class="map-type">Geology & Hydrology</div>
+            <div class="map-title">Geological & Hydrological Map</div>
+            <div class="map-sub">4 rock types: Migmatite (dominant), OGF, qS, Undifferentiated Schist</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOIL CHARACTERIZATION -->
+  <div class="content-section">
+    <div class="content-inner">
+      <div class="section-label">Soil Characterization</div>
+      <h2 class="section-title">Soil classification & physical properties</h2>
+      <div class="maps-grid-2">
+        <div class="map-card tall">
+          <img src="soil_map.jpg" alt="Soil Map of Ikere Area" />
+          <div class="map-caption">
+            <div class="map-type">Soil Classification</div>
+            <div class="map-title">Soil Map</div>
+            <div class="map-sub">8 series: Chromic Lixisols, Petroferric Lithosols, Ferric Lixisol, Eutric Fluvisol, Eutric Cambisol, Plinthic Cambisol, Ferric Lixisol (Woro), Plinthosol</div>
+          </div>
+        </div>
+        <div class="map-card tall">
+          <img src="soil_depth.jpg" alt="Soil Depth Map of Ikere Area" />
+          <div class="map-caption">
+            <div class="map-type">Physical Property</div>
+            <div class="map-title">Soil Depth</div>
+            <div class="map-sub">Very Shallow 0.68% · Shallow 18.92% · Moderately Deep 67.91% · Deep 12.5%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NUTRIENT MAPS -->
+  <div class="content-section surface">
+    <div class="content-inner">
+      <div class="section-label">Soil Nutrients</div>
+      <h2 class="section-title">Nutrient distribution maps</h2>
+      <div class="prose" style="margin-bottom:1rem;">
+        <p>Five key soil chemical parameters were mapped using IDW interpolation. The results reveal a landscape largely adequate in organic carbon and nitrogen but significantly deficient in available phosphorus — a critical finding for fertilizer management planning.</p>
+      </div>
+
+      <div class="method-box">
+        <h4>Why IDW over Kriging?</h4>
+        <p>IDW was selected because it <strong>honours actual measured values at sample points</strong>, making the interpolated surface directly traceable to field observations. Kriging applies a statistical model that smooths values between sample locations, which can mask localized nutrient hotspots and deficiency pockets that are exactly what agronomic management needs to detect. For soil nutrient mapping at this grid density, IDW produces a more faithful and actionable representation of spatial variability across the study area.</p>
+      </div>
+
+      <!-- Nutrient summary table -->
+      <table class="nutrient-table" style="margin-top:2rem;margin-bottom:2rem;">
+        <thead>
+          <tr><th>Parameter</th><th>Dominant Class</th><th>Coverage</th><th>Agronomic Implication</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Organic Carbon</td><td>High (&gt;1.4%)</td><td>98.11%</td><td>Good soil organic matter status across most of the area</td></tr>
+          <tr><td>Total Nitrogen</td><td>High (&gt;0.20%)</td><td>93.97%</td><td>Adequate nitrogen levels; localized deficiencies in 6% of area</td></tr>
+          <tr><td>Available Phosphorus</td><td>Low (3.0–7.0 mg/kg)</td><td>76.79%</td><td>P deficiency widespread — phosphate fertilization recommended</td></tr>
+          <tr><td>Exchangeable Potassium</td><td>Moderate (0.30–0.60 cmol/kg)</td><td>65.13%</td><td>Moderate K status; supplementation needed in 34% of area</td></tr>
+          <tr><td>Exchangeable Calcium</td><td>Moderate (5.19–8.41 cmol/kg)</td><td>85%</td><td>Generally adequate; low Ca patches in western portions</td></tr>
+        </tbody>
+      </table>
+
+      <div class="maps-grid-3">
+        <div class="map-card">
+          <img src="soil_organic_carbon.jpg" alt="Organic Carbon Map" />
+          <div class="map-caption">
+            <div class="map-type">Nutrient Map</div>
+            <div class="map-title">Organic Carbon</div>
+            <div class="map-sub">98.11% High (&gt;1.4%)</div>
+          </div>
+        </div>
+        <div class="map-card">
+          <img src="soil_nitrogen.jpg" alt="Total Nitrogen Map" />
+          <div class="map-caption">
+            <div class="map-type">Nutrient Map</div>
+            <div class="map-title">Total Nitrogen</div>
+            <div class="map-sub">93.97% High (&gt;0.20%)</div>
+          </div>
+        </div>
+        <div class="map-card">
+          <img src="soil_phosphorus.jpg" alt="Available Phosphorus Map" />
+          <div class="map-caption">
+            <div class="map-type">Nutrient Map</div>
+            <div class="map-title">Available Phosphorus</div>
+            <div class="map-sub">76.79% Low (3.0–7.0 mg/kg)</div>
+          </div>
+        </div>
+      </div>
+      <div class="maps-grid-2" style="margin-top:1.5rem;">
+        <div class="map-card">
+          <img src="soil_potassium.jpg" alt="Exchangeable Potassium Map" />
+          <div class="map-caption">
+            <div class="map-type">Nutrient Map</div>
+            <div class="map-title">Exchangeable Potassium</div>
+            <div class="map-sub">65.13% Moderate (0.30–0.60 cmol/kg)</div>
+          </div>
+        </div>
+        <div class="map-card">
+          <img src="soil_calcium.jpg" alt="Exchangeable Calcium Map" />
+          <div class="map-caption">
+            <div class="map-type">Nutrient Map</div>
+            <div class="map-title">Exchangeable Calcium</div>
+            <div class="map-sub">85% Moderate (5.19–8.41 cmol/kg)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EROSION & FERTILITY -->
+  <div class="content-section">
+    <div class="content-inner">
+      <div class="section-label">Land Degradation</div>
+      <h2 class="section-title">Erosion risk & fertility capability</h2>
+      <div class="maps-grid-2">
+        <div class="map-card tall">
+          <img src="soil_erosion.jpg" alt="Soil Erosion Risk Map" />
+          <div class="map-caption">
+            <div class="map-type">Erosion Risk (K Factor)</div>
+            <div class="map-title">Soil Erosion Risk Map</div>
+            <div class="map-sub">Moderate 71.76% (4,858 Ha) · High 22.83% (1,546 Ha)</div>
+          </div>
+        </div>
+        <div class="map-card tall">
+          <img src="soil_fertility.jpg" alt="Fertility Capability Classification Map" />
+          <div class="map-caption">
+            <div class="map-type">FCC System</div>
+            <div class="map-title">Fertility Capability Classification</div>
+            <div class="map-sub">7 FCC classes — L, L", L"R, L'(15%), L/LR, LiR, Lig</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CROP SUITABILITY -->
+  <div class="content-section surface">
+    <div class="content-inner">
+      <div class="section-label">Land Suitability</div>
+      <h2 class="section-title">Crop suitability assessment</h2>
+      <div class="prose" style="margin-bottom:1.5rem;">
+        <p>Using the FAO land suitability framework, soil physical and chemical properties were evaluated against the requirements of three priority crops. Suitability classes range from S1 (highly suitable) through S2 (moderately suitable with limitations) to S3 (marginally suitable) and N1 (not suitable due to wetness constraints).</p>
+      </div>
+      <div class="maps-grid-3">
+        <div class="map-card tall">
+          <img src="soil_maize.jpg" alt="Maize Suitability Map" />
+          <div class="map-caption">
+            <div class="map-type">Crop Suitability</div>
+            <div class="map-title">Maize Suitability</div>
+            <div class="map-sub">8 suitability classes · N1w, S2fe-2, S2g, S2ge-2, S2s, S2sgfe-1, S3sfe3, S3stf</div>
+          </div>
+        </div>
+        <div class="map-card tall">
+          <img src="soil_rice.jpg" alt="Rice Suitability Map" />
+          <div class="map-caption">
+            <div class="map-type">Crop Suitability</div>
+            <div class="map-title">Rice Suitability</div>
+            <div class="map-sub">8 suitability classes · S1 zones in eastern corridor</div>
+          </div>
+        </div>
+        <div class="map-card tall">
+          <img src="soil_soybean.jpg" alt="Soybean Suitability Map" />
+          <div class="map-caption">
+            <div class="map-type">Crop Suitability</div>
+            <div class="map-title">Soybean Suitability</div>
+            <div class="map-sub">7 suitability classes · N1w, S2fe-2, S2g, S2ge-2, S2s, S2sfe-3, S2sgfe-1, S3fst</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- METHODOLOGY -->
+  <div class="content-section">
+    <div class="content-inner">
+      <div class="section-label">Methodology</div>
+      <h2 class="section-title">Analytical approach</h2>
+      <div class="two-col">
+        <div class="prose">
+          <p><strong>Sampling design:</strong> A systematic grid sampling design was adopted at 700m spacing across the study area, yielding 139 georeferenced sample points. This spacing was selected to capture spatial variability at a scale relevant to farm management unit decisions.</p>
+          <p><strong>Interpolation:</strong> IDW was applied to all nutrient parameters. The method assigns weights inversely proportional to distance, ensuring that closer sample points have greater influence on interpolated values. This preserves actual field measurements at sample locations without imposing statistical model assumptions.</p>
+        </div>
+        <div class="prose">
+          <p><strong>Suitability evaluation:</strong> Land suitability was assessed using the FAO framework, matching soil physical properties (depth, texture, drainage) and chemical properties (nutrient levels, pH) against published crop requirement tables for maize, rice, and soybean.</p>
+          <p><strong>Erosion risk:</strong> The K factor (soil erodibility) was computed from soil texture and organic matter data, then mapped to identify areas requiring soil conservation measures. Fertility Capability Classification was applied using the FCC system to provide a management-oriented characterization of soil limitations.</p>
+        </div>
+      </div>
+      <div style="margin-top:2.5rem;">
+        <div class="section-label">Tools Used</div>
+        <div class="tools-wrap">
+          <span class="tool-tag">ArcGIS Pro</span>
+          <span class="tool-tag">ArcMap</span>
+          <span class="tool-tag">IDW Interpolation</span>
+          <span class="tool-tag">FAO Suitability Framework</span>
+          <span class="tool-tag">FCC System</span>
+          <span class="tool-tag">K Factor Analysis</span>
+          <span class="tool-tag">Systematic Grid Sampling</span>
+          <span class="tool-tag">Spatial Join</span>
+          <span class="tool-tag">Raster Classification</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KEY FINDINGS -->
+  <div class="content-section surface">
+    <div class="content-inner">
+      <div class="section-label">Key Findings</div>
+      <h2 class="section-title">What the analysis revealed</h2>
+      <div class="findings-grid">
+        <div class="finding-card">
+          <span class="finding-num">P Deficient</span>
+          <p class="finding-text">Available phosphorus is critically low across 76.79% of the study area, making phosphate fertilization the single most impactful agronomic intervention for this farmland. Organic carbon and nitrogen are comparatively adequate, which is unusual and reflects the strong organic matter status of the soils.</p>
+        </div>
+        <div class="finding-card">
+          <span class="finding-num">22.83%</span>
+          <p class="finding-text">Over a fifth of the study area — 1,545 hectares — falls in the High erosion risk class based on K factor analysis. These areas, concentrated in the steeper portions of the study area, require soil conservation measures before intensive cultivation begins.</p>
+        </div>
+        <div class="finding-card">
+          <span class="finding-num">Rice East</span>
+          <p class="finding-text">The eastern corridor shows S1 (highly suitable) classification for rice, linked to the presence of Eutric Fluvisol (Jago series) soils associated with drainage channels. This spatial specificity demonstrates the value of detailed soil mapping over generic land assessment.</p>
+        </div>
+        <div class="finding-card">
+          <span class="finding-num">Migmatite</span>
+          <p class="finding-text">Migmatite dominates the geology of the study area, which is reflected in the predominantly Ferric and Chromic Lixisol soil types. The strong geological-soil relationship confirms that parent material is the primary control on spatial nutrient patterns — a finding that improves interpretability of the nutrient maps.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="back-section">
+    <a href="index.html" class="back-btn">← Return to Portfolio</a>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:1000;align-items:center;justify-content:center;cursor:zoom-out;" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" style="max-width:92vw;max-height:92vh;object-fit:contain;box-shadow:0 0 60px rgba(0,0,0,0.8);border:1px solid rgba(100,200,155,0.2);" />
+    <div style="position:absolute;top:1.5rem;right:2rem;font-family:'DM Mono',monospace;font-size:0.7rem;color:rgba(255,255,255,0.4);letter-spacing:0.1em;">ESC or click to close</div>
+  </div>
+
+  <script>
+    document.querySelectorAll('img').forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', function(e) {
+        e.stopPropagation();
+        openLightbox(this.src);
+      });
+    });
+    function openLightbox(src) {
+      const lb = document.getElementById('lightbox');
+      document.getElementById('lightbox-img').src = src;
+      lb.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+
+</body>
+</html>
