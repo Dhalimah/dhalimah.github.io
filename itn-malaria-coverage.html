@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ITN Malaria Coverage Analysis — Kano & Kaduna | Halimat Akanbi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0d1b27; --surface: #152436; --surface2: #1c2f44;
+      --border: rgba(100,200,155,0.22); --green: #6ddba0; --gold: #d4bb7d;
+      --blue: #5ba8d4; --red: #d46b6b; --text: #edf3ef;
+      --text-muted: #92b8a5; --text-dim: #4e7060;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-mono: 'DM Mono', monospace; --font-sans: 'Outfit', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(109,219,160,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(109,219,160,0.04) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.2rem 3rem; display: flex; align-items: center; justify-content: space-between; background: rgba(13,27,39,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: var(--font-mono); font-size: 0.75rem; color: var(--green); letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; }
+    .nav-back { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.3s; }
+    .nav-back:hover { color: var(--green); }
+    .project-hero { padding: 9rem 3rem 5rem; position: relative; z-index: 1; border-bottom: 1px solid var(--border); }
+    .project-hero-inner { max-width: 1100px; margin: 0 auto; }
+    .project-tag { font-family: var(--font-mono); font-size: 0.65rem; color: var(--green); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.8rem; }
+    .project-tag::before { content: ''; width: 2rem; height: 1px; background: var(--green); }
+    .project-hero h1 { font-family: var(--font-serif); font-size: clamp(2rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; margin-bottom: 1.5rem; max-width: 860px; }
+    .project-hero h1 em { font-style: italic; color: var(--green); }
+    .project-meta-strip { display: flex; flex-wrap: wrap; gap: 2rem; margin-bottom: 2rem; }
+    .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+    .meta-label { font-family: var(--font-mono); font-size: 0.58rem; color: var(--text-dim); letter-spacing: 0.15em; text-transform: uppercase; }
+    .meta-value { font-size: 0.9rem; color: var(--text-muted); }
+    .stats-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 3rem; }
+    .stat-card { background: var(--surface); padding: 1.5rem; text-align: center; }
+    .stat-card .num { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 300; display: block; line-height: 1; margin-bottom: 0.4rem; }
+    .num.green { color: var(--green); } .num.gold { color: var(--gold); } .num.blue { color: var(--blue); }
+    .stat-card .slabel { font-family: var(--font-mono); font-size: 0.58rem; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; display: block; }
+    .content-section { position: relative; z-index: 1; padding: 5rem 3rem; border-bottom: 1px solid var(--border); }
+    .content-section.surface { background: var(--surface); }
+    .content-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-family: var(--font-mono); font-size: 0.62rem; color: var(--green); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.8rem; }
+    .section-label::after { content: ''; width: 2rem; height: 1px; background: var(--green); }
+    .section-title { font-family: var(--font-serif); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 300; margin-bottom: 2rem; line-height: 1.2; }
+    .prose { font-size: 0.97rem; color: var(--text-muted); line-height: 1.9; max-width: 750px; }
+    .prose p { margin-bottom: 1.2rem; } .prose p:last-child { margin-bottom: 0; }
+    .prose strong { color: var(--text); font-weight: 500; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .two-col .prose { max-width: 100%; }
+    .indicators-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 2rem; }
+    .indicator-card { background: var(--surface2); padding: 1.8rem; }
+    .ind-num { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 0.4rem; }
+    .ind-name { font-family: var(--font-mono); font-size: 0.65rem; color: var(--green); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.6rem; }
+    .ind-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
+    .maps-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+    .maps-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.5rem; }
+    .map-card { border: 1px solid var(--border); background: var(--surface2); overflow: hidden; transition: border-color 0.3s; }
+    .map-card:hover { border-color: rgba(109,219,160,0.4); }
+    .map-card img { width: 100%; height: 360px; object-fit: cover; object-position: center top; display: block; transition: transform 0.4s; cursor: zoom-in; }
+    .map-card:hover img { transform: scale(1.02); }
+    .map-caption { padding: 1rem 1.2rem; border-top: 1px solid var(--border); }
+    .map-type { font-family: var(--font-mono); font-size: 0.6rem; color: var(--green); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.3rem; }
+    .map-title { font-size: 0.9rem; color: var(--text); }
+    .map-sub { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; }
+    .method-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; font-size: 0.87rem; }
+    .method-table th { font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-dim); letter-spacing: 0.12em; text-transform: uppercase; padding: 0.8rem 1.2rem; text-align: left; background: var(--surface2); border-bottom: 1px solid var(--border); }
+    .method-table td { padding: 0.9rem 1.2rem; color: var(--text-muted); border-bottom: 1px solid var(--border); vertical-align: top; }
+    .method-table tr:last-child td { border-bottom: none; }
+    .method-table tr:hover td { background: var(--surface2); }
+    .method-table td:first-child { font-family: var(--font-mono); font-size: 0.7rem; color: var(--green); white-space: nowrap; }
+    .tools-wrap { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .tool-tag { font-family: var(--font-mono); font-size: 0.65rem; padding: 0.4rem 0.9rem; border: 1px solid var(--border); color: var(--text-muted); letter-spacing: 0.06em; border-radius: 1px; transition: all 0.2s; }
+    .tool-tag:hover { border-color: var(--green); color: var(--green); }
+    .findings-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 1.5rem; }
+    .finding-card { background: var(--surface); padding: 1.8rem; }
+    .finding-num { font-family: var(--font-serif); font-size: 2rem; font-weight: 300; color: var(--gold); display: block; margin-bottom: 0.5rem; }
+    .finding-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+    .back-section { position: relative; z-index: 1; padding: 3rem; text-align: center; }
+    .back-btn { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.8rem 2rem; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); border: 1px solid var(--border); text-decoration: none; transition: all 0.3s; border-radius: 1px; }
+    .back-btn:hover { border-color: var(--green); color: var(--green); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .project-tag { animation: fadeUp 0.5s ease both; }
+    .project-hero h1 { animation: fadeUp 0.5s ease 0.1s both; }
+    .project-meta-strip { animation: fadeUp 0.5s ease 0.2s both; }
+    .stats-row { animation: fadeUp 0.5s ease 0.3s both; }
+    @media (max-width: 768px) {
+      nav, .project-hero, .content-section, .back-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .two-col { grid-template-columns: 1fr; gap: 2rem; }
+      .maps-grid-3, .maps-grid-2 { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .indicators-grid { grid-template-columns: 1fr; }
+      .findings-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">HDA</a>
+    <a href="index.html" class="nav-back">← Back to Portfolio</a>
+  </nav>
+
+  <div class="project-hero">
+    <div class="project-hero-inner">
+      <div class="project-tag">Spatial Epidemiology · Public Health · GIS</div>
+      <h1>ITN Malaria Coverage Analysis<br><em>Kano &amp; Kaduna States, Nigeria</em></h1>
+      <div class="project-meta-strip">
+        <div class="meta-item"><span class="meta-label">Study Area</span><span class="meta-value">Kano & Kaduna States, Northwest Nigeria</span></div>
+        <div class="meta-item"><span class="meta-label">LGAs Covered</span><span class="meta-value">67 Local Government Areas</span></div>
+        <div class="meta-item"><span class="meta-label">Framework</span><span class="meta-value">WHO / RBM 2024 ITN Indicators</span></div>
+        <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">Mayosh Concept / SCIDaR (Freelance)</span></div>
+        <div class="meta-item"><span class="meta-label">Status</span><span class="meta-value">Journal Article in Preparation</span></div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-card"><span class="num green">161k</span><span class="slabel">Individual records</span></div>
+        <div class="stat-card"><span class="num gold">27k</span><span class="slabel">Household records</span></div>
+        <div class="stat-card"><span class="num blue">67</span><span class="slabel">LGAs analysed</span></div>
+        <div class="stat-card"><span class="num green">6</span><span class="slabel">WHO/RBM indicators</span></div>
+        <div class="stat-card"><span class="num gold">2</span><span class="slabel">States covered</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="content-section">
+    <div class="content-inner">
+      <div class="section-label">Overview</div>
+      <h2 class="section-title">Background & Objectives</h2>
+      <div class="two-col">
+        <div class="prose">
+          <p>Insecticide-treated nets (ITNs) are one of the most effective tools for malaria prevention, yet distribution alone does not guarantee protection. Ownership, access, and actual usage often diverge sharply — and that gap tells a more important story than any single metric.</p>
+          <p>This project applied the <strong>WHO/RBM 2024 ITN indicator framework</strong> to household survey data from 67 LGAs across Kano and Kaduna States, computing six indicators per LGA and mapping their spatial distribution. The goal was to identify not just where coverage is low, but <strong>why</strong> — distinguishing between supply-side failures and behavioural gaps.</p>
+        </div>
+        <div class="prose">
+          <p>The analysis drew on <strong>161,291 individual records</strong> and approximately <strong>27,000 household records</strong>, making it one of the most granular LGA-level ITN assessments conducted in northern Nigeria.</p>
+          <p>Spatial autocorrelation using <strong>Global Moran's I</strong> confirmed non-random clustering of coverage gaps. Getis-Ord Gi* hotspot detection then pinpointed the specific LGAs driving that clustering. A bivariate choropleth cross-classified access and behavioural gap into four actionable programmatic typologies.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INDICATORS -->
+  <div class="content-section surface">
+    <div class="content-inner">
+      <div class="section-label">Framework</div>
+      <h2 class="section-title">Six WHO/RBM indicators computed per LGA</h2>
+      <div class="indicators-grid">
+        <div class="indicator-card">
+          <div class="ind-num">01</div>
+          <div class="ind-name">Ownership Rate</div>
+          <p class="ind-desc">Proportion of households owning at least one ITN. The baseline supply-side indicator — a household without a net cannot be protected regardless of behaviour.</p>
+        </div>
+        <div class="indicator-card">
+          <div class="ind-num">02</div>
+          <div class="ind-name">Access Rate</div>
+          <p class="ind-desc">Proportion of the household population with access to an ITN, using the 1:2 net-to-person standard. Access is lower than ownership where nets are outnumbered by people.</p>
+        </div>
+        <div class="indicator-card">
+          <div class="ind-num">03</div>
+          <div class="ind-name">Usage Rate</div>
+          <p class="ind-desc">Proportion of the population who slept under an ITN the previous night. The most direct measure of actual protection achieved.</p>
+        </div>
+        <div class="indicator-card">
+          <div class="ind-num">04</div>
+          <div class="ind-name">Behavioural Gap</div>
+          <p class="ind-desc">The difference between access and usage — people who had a net available but did not use it. A high gap signals behaviour and knowledge barriers, not supply shortfalls.</p>
+        </div>
+        <div class="indicator-card">
+          <div class="ind-num">05</div>
+          <div class="ind-name">U5 Usage Rate</div>
+          <p class="ind-desc">ITN usage among children under 5 — a WHO priority subgroup given their disproportionate malaria mortality burden.</p>
+        </div>
+        <div class="indicator-card">
+          <div class="ind-num">06</div>
+          <div class="ind-name">W15–49 Usage Rate</div>
+          <p class="ind-desc">ITN usage among women aged 15–49 — the second WHO priority subgroup, particularly pregnant women at elevated malaria risk.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAPS -->
+  <div class="content-section">
+    <div class="content-inner">
+      <div class="section-label">Results — Coverage Maps</div>
+      <h2 class="section-title">Spatial distribution of ITN indicators</h2>
+      <div class="prose" style="margin-bottom:1.5rem;">
+        <p>All indicators were computed per LGA and mapped as choropleth layers. The contrast between Kano (generally moderate to high access) and Kaduna (predominantly critical to low across all indicators) is the defining spatial pattern of this analysis.</p>
+      </div>
+      <div class="maps-grid-3">
+        <div class="map-card">
+          <img src="Ownership_Rate.jpg" alt="Ownership Rate Map" />
+          <div class="map-caption">
+            <div class="map-type">Indicator 01</div>
+            <div class="map-title">Ownership Rate</div>
+            <div class="map-sub">Very Low (&lt;20%) to High (≥80%)</div>
+          </div>
+        </div>
+        <div class="map-card">
+          <img src="Access_to_net.jpg" alt="Access to Net Map" />
+          <div class="map-caption">
+            <div class="map-type">Indicator 02</div>
+            <div class="map-title">Access to Net</div>
+            <div class="map-sub">Critical (&lt;40%) to High (≥80%)</div>
+          </div>
+        </div>
+        <div class="map-card">
+          <img src="Usage_Rate.jpg" alt="Usage Rate Map" />
+          <div class="map-caption">
+            <div class="map-type">Indicator 03</div>
+            <div class="map-title">Usage Rate</div>
+            <div class="map-sub">Very Low (&lt;30%) to High (≥70%)</div>
+          </div>
+        </div>
+      </div>
+      <div class="maps-grid-2">
+        <div class="map-card">
+          <img src="Behavioural_Gap.jpg" alt="Behavioural Gap Map" />
+          <div class="map-caption">
+            <div class="map-type">Indicator 04</div>
+            <div class="map-title">Behavioural Gap</div>
+            <div class="map-sub">Negligible (0.00–0.10) to Severe (&gt;0.40)</div>
+          </div>
+        </div>
+        <div class="map-card">
+          <img src="Bivariate_Map_of_Access_to_Gap.jpg" alt="Bivariate Map" />
+          <div class="map-caption">
+            <div class="map-type">Bivariate Analysis</div>
+            <div class="map-title">Access vs. Behavioural Gap</div>
+            <div class="map-sub">Four programmatic typologies by LGA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPATIAL ANALYSIS -->
+  <div class="content-section surface">
+    <div class="content-inner">
+      <div class="section-label">Spatial Analysis</div>
+      <h2 class="section-title">Hotspot detection & spatial autocorrelation</h2>
+      <div class="two-col">
+        <div class="prose">
+          <p><strong>Global Moran's I</strong> confirmed statistically significant spatial clustering of the behavioural gap across LGAs. The pattern is not random — LGAs with high gaps cluster together, and this spatial dependence justifies the use of local indicators to identify where the problem concentrates.</p>
+          <p><strong>Getis-Ord Gi* hotspot analysis</strong> identified the specific LGAs driving this clustering. Kaduna's central corridor — including Igabi, Zaria, Sabon-Ga, Soba, and Kudan — emerges as a statistically significant hotspot at 99% confidence. These are LGAs where nets exist but are consistently not being used, pointing to behaviour-change interventions rather than additional net distribution.</p>
+        </div>
+        <div>
+          <img src="clusteredValues01.png" alt="Moran's I Output" style="width:100%;border:1px solid var(--border);background:white;padding:1rem;cursor:zoom-in;" />
+          <div style="margin-top:0.8rem;font-family:var(--font-mono);font-size:0.6rem;color:var(--text-dim);letter-spacing:0.08em;">Global Moran's I — confirming significant spatial clustering (p &lt; 0.01)</div>
+        </div>
+      </div>
+      <div style="margin-top:3rem;">
+        <div class="section-label">Hotspot Map</div>
+        <div class="map-card" style="max-width:580px;">
+          <img src="Hotspot_behavioural_Gap.jpg" alt="Hotspot Analysis Behavioural Gap" style="height:500px;" />
+          <div class="map-caption">
+            <div class="map-type">Getis-Ord Gi* Analysis</div>
+            <div class="map-title">Behavioural Gap Hotspot Map</div>
+            <div class="map-sub">Hot spots at 99%, 95%, and 90% confidence — Kaduna central corridor</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- METHODOLOGY -->
+  <div class="content-section">
+    <div class="content-inner">
+      <div class="section-label">Methodology</div>
+      <h2 class="section-title">Data & analytical approach</h2>
+      <table class="method-table">
+        <thead>
+          <tr><th>Data</th><th>Records</th><th>Use</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Member-level survey data</td><td>161,291 individuals</td><td>Usage, access, and subgroup (U5, W15–49) indicator calculation</td></tr>
+          <tr><td>Household-level survey data</td><td>~27,000 households</td><td>Ownership and universal coverage indicator calculation</td></tr>
+          <tr><td>LGA boundary shapefile</td><td>67 LGAs</td><td>Spatial join, choropleth mapping, and autocorrelation analysis</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:2.5rem;">
+        <div class="section-label">Tools Used</div>
+        <div class="tools-wrap">
+          <span class="tool-tag">ArcGIS Pro</span>
+          <span class="tool-tag">Microsoft Excel</span>
+          <span class="tool-tag">Global Moran's I</span>
+          <span class="tool-tag">Getis-Ord Gi*</span>
+          <span class="tool-tag">Bivariate Choropleth</span>
+          <span class="tool-tag">Spatial Autocorrelation</span>
+          <span class="tool-tag">Hotspot Analysis</span>
+          <span class="tool-tag">WHO/RBM 2024 Framework</span>
+          <span class="tool-tag">Spatial Join</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINDINGS -->
+  <div class="content-section surface">
+    <div class="content-inner">
+      <div class="section-label">Key Findings</div>
+      <h2 class="section-title">What the analysis revealed</h2>
+      <div class="findings-grid">
+        <div class="finding-card">
+          <span class="finding-num">Kaduna</span>
+          <p class="finding-text">Performs critically across all six indicators. Ownership, access, and usage rates are predominantly in the lowest categories, pointing to both supply-side deficits and behavioural barriers that require a dual-track programmatic response.</p>
+        </div>
+        <div class="finding-card">
+          <span class="finding-num">Kano</span>
+          <p class="finding-text">Shows moderate to high access rates in most LGAs, but the behavioural gap remains a challenge. Nets are reaching households but are not always being used, suggesting the focus should shift from distribution to behaviour-change communication.</p>
+        </div>
+        <div class="finding-card">
+          <span class="finding-num">Clustered</span>
+          <p class="finding-text">Global Moran's I confirmed statistically significant spatial clustering of the behavioural gap. Coverage failures are not randomly distributed — they concentrate geographically, making spatial targeting of interventions both valid and necessary.</p>
+        </div>
+        <div class="finding-card">
+          <span class="finding-num">4 Types</span>
+          <p class="finding-text">The bivariate choropleth classified LGAs into four programmatic typologies: High Access / Low Gap (maintain), High Access / High Gap (behaviour change needed), Low Access / Low Gap (distribution needed), and Low Access / High Gap (both required).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="back-section">
+    <a href="index.html" class="back-btn">← Return to Portfolio</a>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:1000;align-items:center;justify-content:center;cursor:zoom-out;" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" style="max-width:92vw;max-height:92vh;object-fit:contain;box-shadow:0 0 60px rgba(0,0,0,0.8);border:1px solid rgba(100,200,155,0.2);" />
+    <div style="position:absolute;top:1.5rem;right:2rem;font-family:'DM Mono',monospace;font-size:0.7rem;color:rgba(255,255,255,0.4);letter-spacing:0.1em;">ESC or click to close</div>
+  </div>
+
+  <script>
+    document.querySelectorAll('img').forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', function(e) {
+        e.stopPropagation();
+        openLightbox(this.src);
+      });
+    });
+    function openLightbox(src) {
+      const lb = document.getElementById('lightbox');
+      document.getElementById('lightbox-img').src = src;
+      lb.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+
+</body>
+</html>
