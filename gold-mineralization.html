@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Orogenic Gold Mineralization — Moro Area | Halimat Akanbi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0d1b27; --surface: #152436; --surface2: #1c2f44;
+      --border: rgba(100,200,155,0.22); --green: #6ddba0; --gold: #d4bb7d;
+      --blue: #5ba8d4; --text: #edf3ef; --text-muted: #92b8a5; --text-dim: #4e7060;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-mono: 'DM Mono', monospace; --font-sans: 'Outfit', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(109,219,160,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(109,219,160,0.04) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.2rem 3rem; display: flex; align-items: center; justify-content: space-between; background: rgba(13,27,39,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: var(--font-mono); font-size: 0.75rem; color: var(--green); letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; }
+    .nav-back { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.3s; }
+    .nav-back:hover { color: var(--green); }
+
+    .project-hero { padding: 9rem 3rem 5rem; position: relative; z-index: 1; border-bottom: 1px solid var(--border); }
+    .project-hero-inner { max-width: 1100px; margin: 0 auto; }
+    .project-tag { font-family: var(--font-mono); font-size: 0.65rem; color: var(--gold); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.8rem; }
+    .project-tag::before { content: ''; width: 2rem; height: 1px; background: var(--gold); }
+    .project-hero h1 { font-family: var(--font-serif); font-size: clamp(2rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; margin-bottom: 1.5rem; max-width: 860px; }
+    .project-hero h1 em { font-style: italic; color: var(--gold); }
+    .project-meta-strip { display: flex; flex-wrap: wrap; gap: 2rem; }
+    .meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+    .meta-label { font-family: var(--font-mono); font-size: 0.58rem; color: var(--text-dim); letter-spacing: 0.15em; text-transform: uppercase; }
+    .meta-value { font-size: 0.9rem; color: var(--text-muted); }
+    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 3rem; }
+    .stat-card { background: var(--surface); padding: 1.5rem; text-align: center; }
+    .stat-card .num { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 300; display: block; line-height: 1; margin-bottom: 0.4rem; }
+    .num.gold { color: var(--gold); } .num.green { color: var(--green); } .num.blue { color: var(--blue); }
+    .stat-card .slabel { font-family: var(--font-mono); font-size: 0.58rem; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; display: block; }
+
+    .content-section { position: relative; z-index: 1; padding: 5rem 3rem; border-bottom: 1px solid var(--border); }
+    .content-section.surface { background: var(--surface); }
+    .content-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-family: var(--font-mono); font-size: 0.62rem; color: var(--gold); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.8rem; }
+    .section-label::after { content: ''; width: 2rem; height: 1px; background: var(--gold); }
+    .section-title { font-family: var(--font-serif); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 300; margin-bottom: 2rem; line-height: 1.2; }
+    .prose { font-size: 0.97rem; color: var(--text-muted); line-height: 1.9; max-width: 750px; }
+    .prose p { margin-bottom: 1.2rem; } .prose p:last-child { margin-bottom: 0; }
+    .prose strong { color: var(--text); font-weight: 500; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .two-col .prose { max-width: 100%; }
+
+    /* WORKFLOW STEPS */
+    .workflow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 2rem; }
+    .workflow-step { background: var(--surface2); padding: 1.5rem; position: relative; }
+    .step-num { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 300; color: rgba(212,187,125,0.25); line-height: 1; margin-bottom: 0.5rem; }
+    .step-title { font-family: var(--font-mono); font-size: 0.62rem; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .step-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* MAP GRIDS */
+    .maps-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+    .maps-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.5rem; }
+    .map-card { border: 1px solid var(--border); background: var(--surface2); overflow: hidden; transition: border-color 0.3s; }
+    .map-card:hover { border-color: rgba(212,187,125,0.4); }
+    .map-card img { width: 100%; height: 340px; object-fit: cover; object-position: center top; display: block; transition: transform 0.4s; cursor: zoom-in; }
+    .map-card.tall img { height: 440px; }
+    .map-card:hover img { transform: scale(1.02); }
+    .map-caption { padding: 0.9rem 1.2rem; border-top: 1px solid var(--border); }
+    .map-type { font-family: var(--font-mono); font-size: 0.58rem; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.2rem; }
+    .map-title { font-size: 0.88rem; color: var(--text); }
+    .map-sub { font-size: 0.77rem; color: var(--text-muted); margin-top: 0.15rem; }
+
+    /* LINEAMENT SECTION */
+    .lineament-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; align-items: start; }
+    .lineament-wrap .map-card img { height: 500px; }
+
+    /* COMING SOON PLACEHOLDER */
+    .placeholder-card { border: 1px dashed rgba(212,187,125,0.3); background: rgba(212,187,125,0.03); padding: 4rem 2rem; text-align: center; margin-top: 2rem; }
+    .placeholder-icon { font-size: 2rem; margin-bottom: 1rem; opacity: 0.4; }
+    .placeholder-text { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.15em; text-transform: uppercase; }
+
+    /* DATA TABLE */
+    .method-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; font-size: 0.87rem; }
+    .method-table th { font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-dim); letter-spacing: 0.12em; text-transform: uppercase; padding: 0.8rem 1.2rem; text-align: left; background: var(--surface2); border-bottom: 1px solid var(--border); }
+    .method-table td { padding: 0.9rem 1.2rem; color: var(--text-muted); border-bottom: 1px solid var(--border); vertical-align: top; }
+    .method-table tr:last-child td { border-bottom: none; }
+    .method-table tr:hover td { background: var(--surface2); }
+    .method-table td:first-child { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold); white-space: nowrap; }
+
+    .tools-wrap { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .tool-tag { font-family: var(--font-mono); font-size: 0.65rem; padding: 0.4rem 0.9rem; border: 1px solid var(--border); color: var(--text-muted); letter-spacing: 0.06em; border-radius: 1px; transition: all 0.2s; }
+    .tool-tag:hover { border-color: var(--gold); color: var(--gold); }
+
+    .findings-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 1.5rem; }
+    .finding-card { background: var(--surface); padding: 1.8rem; }
+    .finding-num { font-family: var(--font-serif); font-size: 1.8rem; font-weight: 300; color: var(--gold); display: block; margin-bottom: 0.5rem; }
+    .finding-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+
+    .back-section { position: relative; z-index: 1; padding: 3rem; text-align: center; }
+    .back-btn { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.8rem 2rem; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); border: 1px solid var(--border); text-decoration: none; transition: all 0.3s; border-radius: 1px; }
+    .back-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .project-tag { animation: fadeUp 0.5s ease both; }
+    .project-hero h1 { animation: fadeUp 0.5s ease 0.1s both; }
+    .project-meta-strip { animation: fadeUp 0.5s ease 0.2s both; }
+    .stats-row { animation: fadeUp 0.5s ease 0.3s both; }
+
+    @media (max-width: 768px) {
+      nav, .project-hero, .content-section, .back-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .two-col, .lineament-wrap { grid-template-columns: 1fr; gap: 2rem; }
+      .maps-grid-2, .maps-grid-3 { grid-template-columns: 1fr; }
+      .stats-row, .workflow { grid-template-columns: repeat(2, 1fr); }
+      .findings-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">HDA</a>
+    <a href="index.html" class="nav-back">← Back to Portfolio</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="project-hero">
+    <div class="project-hero-inner">
+      <div class="project-tag">Mineral Exploration · Remote Sensing · Structural Geology</div>
+      <h1>Orogenic Gold Mineralization<br><em>Moro Area, Kwara State, Nigeria</em></h1>
+      <div class="project-meta-strip">
+        <div class="meta-item"><span class="meta-label">Study Area</span><span class="meta-value">Moro LGA, Kwara State — Nigerian Schist Belt</span></div>
+        <div class="meta-item"><span class="meta-label">Primary Sensor</span><span class="meta-value">ASTER Multispectral + Sentinel-1 SAR</span></div>
+        <div class="meta-item"><span class="meta-label">Methods</span><span class="meta-value">Band Ratio, Crosta PCA, Lineament Analysis</span></div>
+        <div class="meta-item"><span class="meta-label">Output</span><span class="meta-value">Manuscript in Preparation</span></div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-card"><span class="num gold">5</span><span class="slabel">Alteration zones mapped</span></div>
+        <div class="stat-card"><span class="num green">2</span><span class="slabel">Image analysis methods</span></div>
+        <div class="stat-card"><span class="num gold">NE–SW</span><span class="slabel">Dominant lineament trend</span></div>
+        <div class="stat-card"><span class="num blue">4</span><span class="slabel">Evidence layers integrated</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="content-section">
+    <div class="content-inner">
+      <div class="section-label">Overview</div>
+      <h2 class="section-title">Background & Research Context</h2>
+      <div class="two-col">
+        <div class="prose">
+          <p>The Moro area of Kwara State lies within the <strong>Nigerian Schist Belt</strong>, a Proterozoic metamorphic terrain known for orogenic gold deposits associated with shear zones, hydrothermal alteration, and structural controls. Despite the region's documented gold occurrences, systematic remote sensing characterization of alteration and structural frameworks had not been undertaken at this scale.</p>
+          <p>This study applied <strong>ASTER multispectral imagery</strong> and <strong>Sentinel-1 SAR data</strong> to map hydrothermal alteration zones and lineament networks across the Moro study area. Both band ratio and Principal Component Analysis (PCA) techniques were applied independently and cross-validated to ensure robust identification of alteration assemblages.</p>
+        </div>
+        <div class="prose">
+          <p>The alteration assemblages targeted — <strong>argillic, propylitic, phyllic, alunite, and iron oxide</strong> — represent the diagnostic hydrothermal footprint of orogenic gold systems. Their spatial distribution, in combination with structural lineament density from both surface and sub-surface analysis, defines the prospectivity framework for the study area.</p>
+          <p>The integration of optical remote sensing (ASTER) with SAR-derived structural data (Sentinel-1) enables a multi-layer evidence approach that is more robust than either dataset alone — a methodology gaining traction in low-exposure terrains where field access is limited.</p>
+        </div>
+      </div>
+
+      <!-- WORKFLOW -->
+      <div style="margin-top:3rem;">
+        <div class="section-label">Analytical Workflow</div>
+        <div class="workflow">
+          <div class="workflow-step">
+            <div class="step-num">01</div>
+            <div class="step-title">Data Acquisition</div>
+            <p class="step-desc">ASTER Level 1T imagery (14 bands, VNIR to TIR) and Sentinel-1 GRD SAR data acquired and preprocessed in ENVI and PCI Geomatica.</p>
+          </div>
+          <div class="workflow-step">
+            <div class="step-num">02</div>
+            <div class="step-title">Alteration Mapping</div>
+            <p class="step-desc">Band ratio indices computed for 5 alteration types. Crosta PCA applied independently to argillic and propylitic assemblages for cross-validation.</p>
+          </div>
+          <div class="workflow-step">
+            <div class="step-num">03</div>
+            <div class="step-title">Structural Analysis</div>
+            <p class="step-desc">Surface lineaments digitized from Sentinel-1 SAR. Sub-surface lineaments extracted from aeromagnetic data. Combined density mapping and rose diagram analysis performed.</p>
+          </div>
+          <div class="workflow-step">
+            <div class="step-num">04</div>
+            <div class="step-title">Evidence Integration</div>
+            <p class="step-desc">Alteration and structural layers integrated with geophysical data through weighted overlay to produce the final mineral prospectivity map.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HYDROTHERMAL ALTERATION — BAND RATIO -->
+  <div class="content-section surface">
+    <div class="content-inner">
+      <div class="section-label">Results — Band Ratio</div>
+      <h2 class="section-title">Hydrothermal alteration zones</h2>
+      <div class="prose" style="margin-bottom:1.5rem;">
+        <p>Five hydrothermal alteration assemblages were mapped using ASTER band ratio indices. High-value (red/warm) pixels indicate zones of elevated alteration intensity — the primary targets for further investigation. The Fala area in the northeast and the Oloko Nka–Sama corridor in the south show consistent elevation across multiple alteration indices, suggesting genuine hydrothermal activity rather than spectral artefacts.</p>
+      </div>
+      <div class="maps-grid-3">
+        <div class="map-card">
+          <img src="gold_argillic.jpg" alt="Argillic Alteration Map" />
+          <div class="map-caption">
+            <div class="map-type">Band Ratio</div>
+            <div class="map-title">Argillic Alteration</div>
+            <div class="map-sub">ASTER bands — Clay mineral mapping · Range: 1.12–2.79</div>
+          </div>
+        </div>
+        <div class="map-card">
+          <img src="gold_propylitic.jpg" alt="Propylitic Alteration Map" />
+          <div class="map-caption">
+            <div class="map-type">Band Ratio</div>
+            <div class="map-title">Propylitic Alteration</div>
+            <div class="map-sub">Chlorite/epidote mapping · Range: 0.96–2.31</div>
+          </div>
+        </div>
+        <div class="map-card">
+          <img src="gold_phyllic.jpg" alt="Phyllic Alteration Map" />
+          <div class="map-caption">
+            <div class="map-type">Band Ratio</div>
+            <div class="map-title">Phyllic Alteration</div>
+            <div class="map-sub">Sericite/muscovite mapping · Range: 0.71–1.50</div>
+          </div>
+        </div>
+      </div>
+      <div class="maps-grid-2">
+        <div class="map-card">
+          <img src="gold_alunite.jpg" alt="Alunite Alteration Map" />
+          <div class="map-caption">
+            <div class="map-type">Band Ratio</div>
+            <div class="map-title">Alunite Alteration</div>
+            <div class="map-sub">Advanced argillic indicator · Range: 0.70–1.37</div>
+          </div>
+        </div>
+        <div class="map-card">
+          <img src="gold_iron_oxide.jpg" alt="Iron Oxide Alteration Map" />
+          <div class="map-caption">
+            <div class="map-type">Band Ratio</div>
+            <div class="map-title">Iron Oxide Alteration</div>
+            <div class="map-sub">Ferric iron mapping · Range: 0–1.71</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PCA MAPS -->
+  <div class="content-section">
+    <div class="content-inner">
+      <div class="section-label">Results — Crosta PCA</div>
+      <h2 class="section-title">Principal Component Analysis validation</h2>
+      <div class="prose" style="margin-bottom:1.5rem;">
+        <p>The Crosta PCA technique was applied independently to argillic and propylitic alteration assemblages. The PC3 components were selected based on eigenvector loading analysis — high positive loadings in PC3 identify pixels dominated by the target mineral assemblage. The spatial correlation between PCA outputs and band ratio maps confirms the robustness of the alteration identification and reduces the likelihood of false positives.</p>
+      </div>
+      <div class="maps-grid-2">
+        <div class="map-card tall">
+          <img src="gold_argillic_pca.jpg" alt="Argillic Alteration PCA PC3" />
+          <div class="map-caption">
+            <div class="map-type">Crosta PCA — PC3</div>
+            <div class="map-title">Argillic Alteration (PCA)</div>
+            <div class="map-sub">High positive values (red/orange) confirm clay-dominated alteration zones · Range: -0.09 to 0.45</div>
+          </div>
+        </div>
+        <div class="map-card tall">
+          <img src="gold_propylitic_pca.jpg" alt="Propylitic Alteration PCA PC3" />
+          <div class="map-caption">
+            <div class="map-type">Crosta PCA — PC3</div>
+            <div class="map-title">Propylitic Alteration (PCA)</div>
+            <div class="map-sub">Eastern corridor shows strong propylitic signature consistent with band ratio results · Range: -0.15 to 0.10</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRUCTURAL ANALYSIS -->
+  <div class="content-section surface">
+    <div class="content-inner">
+      <div class="section-label">Structural Analysis</div>
+      <h2 class="section-title">Lineament mapping & structural framework</h2>
+      <div class="prose" style="margin-bottom:1.5rem;">
+        <p>Surface lineaments were digitized from Sentinel-1 SAR imagery and validated against the aeromagnetic sub-surface lineament pattern. The rose diagram reveals a dominant <strong>NE-SW trending lineament system</strong>, consistent with the regional structural fabric of the Nigerian Schist Belt. NW-SE trending cross-structures are also present and are of particular interest as intersection zones — areas where two structural trends intersect are classic loci for orogenic gold trapping.</p>
+      </div>
+      <div class="lineament-wrap">
+        <div class="map-card">
+          <img src="gold_surface_rose.png" alt="Surface Lineament Map and Rose Diagram" />
+          <div class="map-caption">
+            <div class="map-type">Structural Mapping</div>
+            <div class="map-title">Surface Lineaments & Rose Diagram</div>
+            <div class="map-sub">Dominant NE-SW trend · NW-SE cross-structures also present · Sentinel-1 SAR derived</div>
+          </div>
+        </div>
+        <div class="map-card">
+          <img src="gold_lineament_density.jpg" alt="Combined Surface and Sub-surface Lineament Density" />
+          <div class="map-caption">
+            <div class="map-type">Density Analysis</div>
+            <div class="map-title">Combined Surface & Sub-surface Lineament Density</div>
+            <div class="map-sub">High density zones (red, 3.3–4.1) at Iwa and Alagbede Forest Reserve — priority structural targets</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROSPECTIVITY MAP -->
+  <div class="content-section">
+    <div class="content-inner">
+      <div class="section-label">Final Output</div>
+      <h2 class="section-title">Mineral prospectivity map</h2>
+      <div class="prose" style="margin-bottom:1.5rem;">
+        <p>The final Mineral Prospectivity Map (MPM) was produced by integrating four evidence layers — hydrothermal alteration, structural control, heat source, and gold/ligand source — using <strong>Fuzzy AHP weighted overlay</strong>. The map classifies the study area into four prospectivity zones: Very Low, Low, Moderate, and High. The overlay with geology and lineaments confirms that High prospectivity zones align with structural intersections and specific rock units, particularly the Migmatite Gneiss and Quartzite Schist units hosting the most significant alteration signatures.</p>
+      </div>
+      <div class="maps-grid-2">
+        <div class="map-card tall">
+          <img src="gold_mpm_standalone.jpg" alt="Mineral Prospectivity Map — Moro Area" />
+          <div class="map-caption">
+            <div class="map-type">Final MPM</div>
+            <div class="map-title">Mineral Prospectivity Map</div>
+            <div class="map-sub">4 classes: Very Low, Low, Moderate, High · Fuzzy AHP weighted overlay</div>
+          </div>
+        </div>
+        <div class="map-card tall">
+          <img src="gold_mpm_overlay.jpg" alt="MPM Overlaid with Geology and Structures" />
+          <div class="map-caption">
+            <div class="map-type">MPM + Geological Overlay</div>
+            <div class="map-title">MPM with Geology & Lineaments</div>
+            <div class="map-sub">MPM classes overlaid with rock units, surface lineaments, and subsurface lineaments</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- METHODOLOGY -->
+  <div class="content-section surface">
+    <div class="content-inner">
+      <div class="section-label">Methodology</div>
+      <h2 class="section-title">Data & analytical approach</h2>
+      <table class="method-table">
+        <thead>
+          <tr><th>Data</th><th>Source</th><th>Use</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>ASTER Level 1T</td><td>NASA/USGS Earth Explorer</td><td>14-band multispectral imagery for alteration mapping (VNIR, SWIR, TIR)</td></tr>
+          <tr><td>Sentinel-1 SAR</td><td>Copernicus Hub (GRD)</td><td>Surface lineament extraction and structural mapping</td></tr>
+          <tr><td>Aeromagnetic Data</td><td>NGSA Nigeria</td><td>Sub-surface lineament extraction and geophysical anomaly mapping</td></tr>
+          <tr><td>Aero-radiometric Data</td><td>NGSA Nigeria</td><td>Complementary geophysical evidence layer</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:2.5rem;">
+        <div class="section-label">Tools Used</div>
+        <div class="tools-wrap">
+          <span class="tool-tag">ENVI</span>
+          <span class="tool-tag">PCI Geomatica</span>
+          <span class="tool-tag">ArcGIS Pro</span>
+          <span class="tool-tag">ArcMap</span>
+          <span class="tool-tag">R / RStudio</span>
+          <span class="tool-tag">ASTER Band Ratio</span>
+          <span class="tool-tag">Crosta PCA</span>
+          <span class="tool-tag">Lineament Analysis</span>
+          <span class="tool-tag">Rose Diagram</span>
+          <span class="tool-tag">Weighted Overlay</span>
+          <span class="tool-tag">Moran's I</span>
+          <span class="tool-tag">Spearman Rank Correlation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KEY FINDINGS -->
+  <div class="content-section">
+    <div class="content-inner">
+      <div class="section-label">Key Findings</div>
+      <h2 class="section-title">What the analysis revealed</h2>
+      <div class="findings-grid">
+        <div class="finding-card">
+          <span class="finding-num">Fala NE</span>
+          <p class="finding-text">The Fala area in the northeast consistently shows elevated alteration signatures across argillic, propylitic, and iron oxide indices — confirmed by both band ratio and PCA methods. This spatial convergence across multiple alteration assemblages is a strong indicator of genuine hydrothermal activity.</p>
+        </div>
+        <div class="finding-card">
+          <span class="finding-num">NE-SW</span>
+          <p class="finding-text">The dominant NE-SW structural trend identified in the rose diagram is consistent with the regional tectonic fabric of the Nigerian Schist Belt. These structures likely served as primary conduits for hydrothermal fluid migration and gold deposition during the Pan-African orogenic event.</p>
+        </div>
+        <div class="finding-card">
+          <span class="finding-num">Iwa Zone</span>
+          <p class="finding-text">The Iwa area shows the highest combined surface and sub-surface lineament density (3.3–4.1), making it a priority structural target. The coincidence of high lineament density with elevated argillic and iron oxide alteration elevates this zone as the primary exploration target.</p>
+        </div>
+        <div class="finding-card">
+          <span class="finding-num">PCA confirms</span>
+          <p class="finding-text">Independent Crosta PCA analysis validated the band ratio results spatially — high-value PC3 pixels align with high band ratio zones for both argillic and propylitic assemblages. This cross-validation reduces spectral confusion risk and strengthens confidence in the alteration map as a genuine geological signal.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="back-section">
+    <a href="index.html" class="back-btn">← Return to Portfolio</a>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:1000;align-items:center;justify-content:center;cursor:zoom-out;" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" style="max-width:92vw;max-height:92vh;object-fit:contain;box-shadow:0 0 60px rgba(0,0,0,0.8);border:1px solid rgba(212,187,125,0.2);" />
+    <div style="position:absolute;top:1.5rem;right:2rem;font-family:'DM Mono',monospace;font-size:0.7rem;color:rgba(255,255,255,0.4);letter-spacing:0.1em;">ESC or click to close</div>
+  </div>
+
+  <script>
+    document.querySelectorAll('img').forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', function(e) {
+        e.stopPropagation();
+        openLightbox(this.src);
+      });
+    });
+    function openLightbox(src) {
+      const lb = document.getElementById('lightbox');
+      document.getElementById('lightbox-img').src = src;
+      lb.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+
+</body>
+</html>
