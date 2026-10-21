@@ -195,15 +195,19 @@
     /* CONTACT */
     #contact { background: var(--ink); color: var(--cream); position: relative; overflow: hidden; }
     #contact::after { content: ''; position: absolute; width: 520px; height: 520px; border-radius: 50%; background: var(--ochre); opacity: .14; left: -180px; bottom: -260px; }
-    .contact-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+    .contact-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr .72fr 1.18fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
     #contact h2 { font-family: var(--sans); font-weight: 800; font-size: clamp(3.2rem, 8.5vw, 6.4rem); line-height: .92; text-transform: uppercase; letter-spacing: -0.02em; }
     #contact h2 span { color: var(--ochre); }
     #contact .sub { font-size: 1.15rem; color: rgba(251,246,238,.8); margin: 1.4rem 0 2rem; max-width: 30rem; }
+    .contact-photo { background: #fff; padding: 10px 10px 16px; border-radius: 10px; transform: rotate(4deg); box-shadow: 0 30px 60px -24px rgba(0,0,0,.7); }
+    .contact-photo img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 4px; }
+    .contact-photo.reveal.in { transform: rotate(4deg); }
+    .contact-photo p { color: var(--ink); font-family: var(--display); text-align: center; margin-top: .5rem; font-size: 1.05rem; }
     .contact-list { list-style: none; display: grid; gap: .8rem; }
     .contact-list a { display: flex; justify-content: space-between; align-items: center; gap: 1rem; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: 14px; padding: 1rem 1.2rem; text-decoration: none; transition: background .2s, transform .2s; }
     .contact-list a:hover { background: var(--ochre); transform: translateX(4px); }
     .contact-list small { font-family: var(--mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; opacity: .7; }
-    .contact-list strong { font-weight: 600; font-size: 1.05rem; overflow-wrap: anywhere; text-align: right; }
+    .contact-list strong { font-weight: 600; font-size: 1rem; overflow-wrap: break-word; word-break: normal; text-align: right; min-width: 0; }
     footer { background: var(--ink); color: rgba(251,246,238,.6); border-top: 1px solid rgba(251,246,238,.12); padding: 1.4rem 0; font-size: .85rem; }
     footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 
@@ -217,6 +221,7 @@
       .nav-links li.opt { display: none; }
       .hero-grid, .about-grid, .contact-grid, .project { grid-template-columns: 1fr; }
       .collage { height: 460px; max-width: 520px; }
+      .contact-photo { max-width: 300px; }
       .project.flip .media { order: 0; }
       .stats { grid-template-columns: repeat(2, 1fr); }
       .tools { grid-template-columns: repeat(4, 1fr); }
@@ -270,13 +275,13 @@
           <a href="#contact" class="btn btn-line">Get in touch</a>
         </div>
       </div>
-      <div class="collage" aria-hidden="true">
-        <div class="card-map"><img src="thumb_gold.jpg" alt="" width="506" height="676"></div>
+      <div class="collage">
+        <div class="card-map" aria-hidden="true"><img src="thumb_gold.jpg" alt="" width="506" height="676"></div>
         <div class="card-photo">
-          <div class="ph"><!--PHOTO--><b>HDA</b><!--/PHOTO--></div>
+          <div class="ph"><img src="photo_halimat.jpg" alt="Halimat Damilola Akanbi" width="800" height="1000"></div>
           <p>Ibadan, Nigeria</p>
         </div>
-        <div class="sticker"><div><big>M.Tech</big>with<br>Distinction</div></div>
+        <div class="sticker" aria-hidden="true"><div><big>M.Tech</big>GIS &amp;<br>Remote Sensing</div></div>
       </div>
     </div>
   </header>
@@ -291,7 +296,7 @@
   <div class="wrap">
     <div class="stats">
       <div class="stat reveal"><span class="stat-num">6+</span><span class="stat-label">Domains of practice</span></div>
-      <div class="stat reveal"><span class="stat-num">4</span><span class="stat-label">States of active fieldwork</span></div>
+      <div class="stat reveal"><span class="stat-num">5</span><span class="stat-label">Featured projects</span></div>
       <div class="stat reveal"><span class="stat-num">2</span><span class="stat-label">Manuscripts in progress</span></div>
       <div class="stat reveal"><span class="stat-num">14</span><span class="stat-label">Tools in my kit</span></div>
     </div>
@@ -304,13 +309,13 @@
         <h2 class="title">Every decision has <em>a&nbsp;where</em></h2>
         <p class="big">Where is the gold likely to be? Which land suits which crop? Which communities will flood next? Where should a health programme send its limited resources first? I answer these questions with evidence.</p>
         <p>I bring two disciplines to that work. As a <strong>geologist</strong>, I read the ground: structure, rock, soil and water, mapped in the field. As a <strong>geoinformation specialist</strong>, I turn satellite imagery, survey data and field records into spatial models, maps and briefs that people can act on.</p>
-        <p>At the <strong>Institute of Agricultural Research and Training (IAR&amp;T)</strong>, I am the sole GIS analyst on projects in four states, taking each one from sampling design and GPS field surveys to decision-support maps, and I maintain a national soil properties database. As a <strong>freelance consultant</strong>, I bring the same methods to health and development programmes: spatial statistics, hotspot analysis and disease modelling that show where coverage is low and where risk concentrates.</p>
-        <p>I hold an <strong>M.Tech in Geoinformation Technology (Distinction)</strong> from FUTA / AFRIGIST and a <strong>B.Sc. in Geology and Mineral Science</strong> from Kwara State University. I learn fast, I am as comfortable in the field as at the computer, and I care about one thing above all: outputs that are accurate, clear and used.</p>
+        <p>At the <strong>Institute of Agricultural Research and Training (IAR&amp;T)</strong>, I am the sole GIS analyst on projects, taking each one from sampling design and GPS field surveys to decision-support maps, and I maintain a national soil properties database. As a <strong>freelance consultant</strong>, I bring the same methods to health and development programmes: spatial statistics, hotspot analysis and disease modelling that show where coverage is low and where risk concentrates.</p>
+        <p>I hold an <strong>M.Tech in Geoinformation Technology</strong> from FUTA / AFRIGIST and a <strong>B.Sc. in Geology and Mineral Science</strong> from Kwara State University. I work with equal ease in the field and at the workstation, and I deliver maps, models and evidence that decision-makers trust and act on.</p>
       </div>
       <ul class="facts reveal">
         <li><span>Role</span>GIS Technologist, IAR&amp;T, OAU</li>
-        <li><span>M.Tech</span>Geoinformation Technology, FUTA / AFRIGIST (Distinction)</li>
-        <li><span>B.Sc.</span>Geology &amp; Mineral Science, KWASU (2:1)</li>
+        <li><span>M.Tech</span>Geoinformation Technology, FUTA / AFRIGIST</li>
+        <li><span>B.Sc.</span>Geology &amp; Mineral Science, KWASU</li>
         <li><span>Based in</span>Ibadan, Nigeria</li>
         <li><span>ORCID</span><a href="https://orcid.org/0009-0005-7128-0884" target="_blank" rel="noopener">0009-0005-7128-0884</a></li>
         <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/akanbi-halimah" target="_blank" rel="noopener">akanbi-halimah</a></li>
@@ -451,6 +456,7 @@
         <p class="sub">Open to research collaborations, consultancy and full-time or remote roles in geology, GIS and spatial data.</p>
         <a href="mailto:akanbihalimah1@gmail.com" class="btn btn-solid" style="background:var(--ochre);border-color:var(--ochre);color:#fff">Email me →</a>
       </div>
+      <figure class="contact-photo reveal"><img src="photo_graduation.jpg" alt="Halimat Akanbi at her M.Tech graduation, FUTA" loading="lazy" width="720" height="720"><p>M.Tech graduation, FUTA</p></figure>
       <ul class="contact-list reveal">
         <li><a href="mailto:akanbihalimah1@gmail.com"><small>Email</small><strong>akanbihalimah1@gmail.com</strong></a></li>
         <li><a href="https://www.linkedin.com/in/akanbi-halimah" target="_blank" rel="noopener"><small>LinkedIn</small><strong>Halimat Akanbi</strong></a></li>
