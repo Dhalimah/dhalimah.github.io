@@ -21,3 +21,9 @@ h1, h2, h3 { color: #151515; }
 /* Per-project accent, matching the homepage */
 html[data-p="flood"] { --green: #2f5f8f; }
 html[data-p="soil"]  { --green: #8c3f6b; }
+
+/* Stronger, more legible text */
+body { font-weight: 400 !important; }
+.prose, .ind-desc, .step-desc, .map-sub, .finding-text { color: #262624 !important; }
+.meta-label, .slabel, .map-type, .section-label, .project-tag, .step-title { font-weight: 500; }
+h1, .section-title { font-weight: 600 !important; }

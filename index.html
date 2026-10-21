@@ -7,7 +7,7 @@
   <meta name="description" content="Portfolio of Halimat Damilola Akanbi, geologist and GIS analyst: mineral prospectivity, soil and land mapping, flood risk, cartography and spatial health analytics." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Mono:wght@500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -16,8 +16,8 @@
       --paper-2: #f2eee6;
       --white: #ffffff;
       --ink: #151515;
-      --ink-soft: #3d3d3b;
-      --muted: #6b6a66;
+      --ink-soft: #262624;
+      --muted: #55534e;
       --rule: rgba(21,21,21,0.12);
       --rule-strong: rgba(21,21,21,0.85);
 
@@ -36,7 +36,7 @@
     }
 
     html { scroll-behavior: smooth; }
-    body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-weight: 400; font-size: 17px; line-height: 1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
     img { display: block; max-width: 100%; }
     a { color: inherit; }
     .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
@@ -46,48 +46,48 @@
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
     .logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; letter-spacing: 0.02em; text-decoration: none; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; color: var(--ink-soft); transition: color .2s; }
+    .nav-links a { font-family: var(--mono); font-weight: 500; font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; color: var(--ink-soft); transition: color .2s; }
     .nav-links a:hover { color: var(--ink); }
 
     /* HERO */
     .hero { padding: clamp(3.5rem, 8vw, 6.5rem) 0 clamp(3rem, 6vw, 5rem); border-bottom: 1px solid var(--rule); }
-    .hero-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
-    .eyebrow { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.4rem; }
-    .hero h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(3rem, 7.5vw, 6rem); line-height: 0.95; letter-spacing: -0.01em; margin-bottom: 1.6rem; }
-    .hero h1 em { font-style: italic; font-weight: 400; color: var(--gold); }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+    .eyebrow { font-family: var(--mono); font-weight: 500; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.4rem; }
+    .hero h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(3rem, 7.5vw, 6rem); line-height: 0.95; letter-spacing: -0.01em; margin-bottom: 1.6rem; }
+    .hero h1 em { font-style: italic; font-weight: 600; color: var(--gold); }
     .hero-lede { font-size: clamp(1.02rem, 1.4vw, 1.15rem); color: var(--ink-soft); max-width: 34rem; margin-bottom: 2.2rem; }
     .actions { display: flex; flex-wrap: wrap; gap: 0.8rem; }
-    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: 0.85rem 1.5rem; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--ink); transition: background .2s, color .2s; }
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: 0.9rem 1.6rem; font-family: var(--mono); font-weight: 500; font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--ink); transition: background .2s, color .2s; }
     .btn-solid { background: var(--ink); color: var(--paper); }
     .btn-solid:hover { background: var(--gold); border-color: var(--gold); }
     .btn-line:hover { background: var(--ink); color: var(--paper); }
     .hero-plate { position: relative; }
-    .hero-plate .frame { background: var(--white); border: 1px solid var(--rule); padding: 14px; box-shadow: 0 30px 60px -30px rgba(21,21,21,0.25); transform: rotate(1.5deg); }
-    .hero-plate img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: contain; background: var(--white); }
-    .hero-plate figcaption { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 1.1rem; text-align: right; }
-    .hero-base { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 2.6rem; }
+    .hero-plate .frame { background: var(--white); border: 1px solid var(--rule); padding: 14px; box-shadow: 0 24px 50px -30px rgba(21,21,21,0.3); }
+    .hero-plate img { width: 100%; height: auto; }
+    .hero-plate { margin: 0; } .hero-plate figcaption { font-family: var(--mono); font-weight: 500; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: .9rem; }
+    .hero-base { font-family: var(--mono); font-weight: 500; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 2.6rem; }
 
     /* STATS */
     .stats { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--rule); }
     .stat { padding: 2rem 1rem; text-align: center; border-right: 1px solid var(--rule); }
     .stat:last-child { border-right: none; }
-    .stat-num { font-family: var(--serif); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 500; line-height: 1; display: block; }
-    .stat-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: .6rem; display: block; }
+    .stat-num { font-family: var(--serif); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 600; line-height: 1; display: block; }
+    .stat-label { font-family: var(--mono); font-weight: 500; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: .6rem; display: block; }
 
     /* SECTIONS */
     section { padding: clamp(4rem, 8vw, 6.5rem) 0; }
     .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--rule-strong); padding-bottom: 1rem; margin-bottom: clamp(2rem, 4vw, 3.2rem); }
-    .section-head h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(2rem, 4.5vw, 3.2rem); line-height: 1.05; text-transform: uppercase; letter-spacing: 0.01em; }
+    .section-head h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(2rem, 4.5vw, 3.2rem); line-height: 1.05; text-transform: uppercase; letter-spacing: 0.01em; }
     .section-head .num { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; color: var(--muted); }
 
     /* ABOUT */
     .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(2rem, 5vw, 5rem); }
     .about-text p { font-size: 1.04rem; color: var(--ink-soft); margin-bottom: 1.2rem; }
-    .about-text p:first-child { font-family: var(--serif); font-size: clamp(1.35rem, 2.2vw, 1.65rem); line-height: 1.4; color: var(--ink); }
-    .about-text strong { font-weight: 500; color: var(--ink); }
+    .about-text p:first-child { font-family: var(--serif); font-weight: 600; font-size: clamp(1.4rem, 2.3vw, 1.75rem); line-height: 1.4; color: var(--ink); }
+    .about-text strong { font-weight: 600; color: var(--ink); }
     .facts { list-style: none; border-top: 1px solid var(--rule); }
     .facts li { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1rem; padding: 0.95rem 0; border-bottom: 1px solid var(--rule); font-size: 0.92rem; }
-    .facts span { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding-top: .2rem; }
+    .facts span { font-family: var(--mono); font-weight: 500; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding-top: .2rem; }
     .facts a { text-decoration: none; border-bottom: 1px solid var(--rule); }
     .facts a:hover { border-color: var(--ink); }
 
@@ -97,9 +97,22 @@
     .skill { padding: 1.6rem 1.2rem 1.6rem 0; border-right: 1px solid var(--rule); padding-left: 1.2rem; }
     .skill:first-child { padding-left: 0; }
     .skill:last-child { border-right: none; }
-    .skill h3 { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; line-height: 1.15; margin-bottom: .9rem; }
+    .skill h3 { font-family: var(--serif); font-size: 1.45rem; font-weight: 700; line-height: 1.15; margin-bottom: .9rem; }
     .skill ul { list-style: none; }
-    .skill li { font-size: 0.9rem; color: var(--ink-soft); padding: .2rem 0; }
+    .skill li { font-size: 0.97rem; color: var(--ink-soft); padding: .2rem 0; }
+
+
+    /* TOOLKIT */
+    .tools { border-top: 1px solid var(--rule); }
+    .tool-row { display: grid; grid-template-columns: 15rem 1fr; gap: 1.5rem; align-items: center; padding: 1.3rem 0; border-bottom: 1px solid var(--rule); }
+    .tool-row h3 { font-family: var(--serif); font-weight: 700; font-size: 1.4rem; line-height: 1.15; }
+    .tool-row ul { list-style: none; display: flex; flex-wrap: wrap; gap: .6rem; }
+    .tool-row li { font-weight: 600; font-size: .95rem; padding: .5rem 1rem; border: 1.5px solid var(--ink); background: var(--white); }
+    .tool-row:nth-child(1) li { border-color: var(--topo); }
+    .tool-row:nth-child(2) li { border-color: var(--flood); }
+    .tool-row:nth-child(3) li { border-color: var(--ink); }
+    .tool-row:nth-child(4) li { border-color: var(--gold); }
+    .tool-row:nth-child(5) li { border-color: var(--soil); }
 
     /* PROJECTS */
     .project { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; padding: clamp(2.5rem, 5vw, 4rem) 0; border-bottom: 1px solid var(--rule); }
@@ -113,28 +126,28 @@
     .text-plate .tp-big { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.3rem); line-height: 1.2; margin-bottom: 1.6rem; }
     .text-plate ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: .5rem 1.2rem; }
     .text-plate li { font-size: .9rem; border-top: 1px solid rgba(255,255,255,.35); padding-top: .5rem; }
-    .domain { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: .7rem; }
+    .domain { font-family: var(--mono); font-weight: 500; font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: .7rem; }
     .domain::before { content: ''; width: 1.8rem; height: 2px; background: currentColor; }
-    .project h3 { font-family: var(--serif); font-weight: 500; font-size: clamp(1.7rem, 3vw, 2.4rem); line-height: 1.1; margin-bottom: .5rem; }
+    .project h3 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.7rem, 3vw, 2.4rem); line-height: 1.1; margin-bottom: .5rem; }
     .project h3 a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; }
     .project .place { font-family: var(--serif); font-style: italic; font-size: 1.15rem; color: var(--muted); margin-bottom: 1.2rem; }
     .project p.desc { color: var(--ink-soft); margin-bottom: 1.4rem; }
-    .used { font-size: 0.88rem; color: var(--ink-soft); margin-bottom: 1.6rem; }
-    .used b { font-weight: 600; color: var(--ink); }
-    .more { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
-    .note { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .used { font-size: 0.95rem; color: var(--ink-soft); margin-bottom: 1.6rem; }
+    .used b { font-weight: 700; color: var(--ink); }
+    .more { font-family: var(--mono); font-weight: 500; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+    .note { font-family: var(--mono); font-weight: 500; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
     .featured-tag { display: inline-block; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; background: var(--ink); color: var(--paper); padding: .3rem .6rem; margin-bottom: 1rem; }
     .c-gold { color: var(--gold); } .c-soil { color: var(--soil); } .c-flood { color: var(--flood); } .c-topo { color: var(--topo); } .c-health { color: var(--health); }
 
     /* CONTACT */
     #contact { background: var(--ink); color: var(--paper); }
     .contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: end; }
-    #contact h2 { font-family: var(--sans); font-weight: 400; font-size: clamp(3rem, 8vw, 5.8rem); line-height: 0.95; letter-spacing: -0.01em; text-transform: uppercase; }
+    #contact h2 { font-family: var(--sans); font-weight: 600; font-size: clamp(3rem, 8vw, 5.8rem); line-height: 0.95; letter-spacing: -0.01em; text-transform: uppercase; }
     #contact .sub { font-family: var(--serif); font-style: italic; font-size: 1.3rem; color: rgba(250,248,244,.7); margin-top: 1.4rem; }
     .contact-list { list-style: none; }
     .contact-list li { border-top: 1px solid rgba(250,248,244,.2); padding: 1rem 0; display: grid; grid-template-columns: 6.5rem 1fr; gap: 1rem; }
     .contact-list li:last-child { border-bottom: 1px solid rgba(250,248,244,.2); }
-    .contact-list span { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,248,244,.55); padding-top: .2rem; }
+    .contact-list span { font-family: var(--mono); font-weight: 500; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(250,248,244,.55); padding-top: .2rem; }
     .contact-list a { font-family: var(--serif); font-size: 1.2rem; text-decoration: none; overflow-wrap: anywhere; }
     .contact-list a:hover { text-decoration: underline; text-underline-offset: 4px; }
     footer { background: var(--ink); color: rgba(250,248,244,.5); border-top: 1px solid rgba(250,248,244,.12); padding: 1.4rem 0; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; }
@@ -155,7 +168,8 @@
       .stat:nth-child(-n+2) { border-bottom: 1px solid var(--rule); }
     }
     @media (max-width: 560px) {
-      .nav-links li:nth-child(2) { display: none; }
+      .nav-links li:nth-child(2), .nav-links li:nth-child(3) { display: none; }
+      .tool-row { grid-template-columns: 1fr; gap: .8rem; }
       .nav-links a { font-size: 0.62rem; }
       .skills { grid-template-columns: 1fr; }
       .text-plate ul { grid-template-columns: 1fr; }
@@ -171,6 +185,7 @@
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#toolkit">Toolkit</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -236,19 +251,19 @@
       <div class="skills">
         <div class="skill">
           <h3>Geology</h3>
-          <ul><li>Structural &amp; lineament mapping</li><li>Hydrothermal alteration</li><li>Prospectivity mapping</li><li>Fuzzy AHP</li><li>Airborne geophysics</li></ul>
+          <ul><li>Structural &amp; lineament mapping</li><li>Hydrothermal alteration</li><li>Mineral prospectivity</li><li>Rock, soil &amp; water sampling</li><li>Airborne geophysics</li></ul>
         </div>
         <div class="skill">
-          <h3>GIS &amp; Cartography</h3>
-          <ul><li>ArcGIS Pro, ArcMap</li><li>QGIS</li><li>Map design &amp; 3D terrain</li><li>Moran's I, Getis-Ord Gi*</li><li>Spatial statistics</li></ul>
+          <h3>Spatial Analysis</h3>
+          <ul><li>Spatial autocorrelation</li><li>Hotspot analysis</li><li>IDW &amp; kriging</li><li>AHP &amp; Fuzzy AHP</li><li>Suitability modelling</li></ul>
         </div>
         <div class="skill">
           <h3>Remote Sensing</h3>
-          <ul><li>Google Earth Engine</li><li>ENVI, PCI Geomatica</li><li>ASTER, Sentinel-1 SAR</li><li>Sentinel-2, Landsat</li><li>Crosta PCA</li></ul>
+          <ul><li>Band ratios</li><li>Crosta PCA</li><li>SAR flood mapping</li><li>Lineament extraction</li><li>Multi-year change</li></ul>
         </div>
         <div class="skill">
-          <h3>Data Science</h3>
-          <ul><li>R / RStudio</li><li>Python</li><li>SQL, SPSS, Excel</li><li>Regression, kriging</li><li>Data cleaning &amp; QA/QC</li></ul>
+          <h3>Cartography</h3>
+          <ul><li>Map design &amp; layout</li><li>Topographic base maps</li><li>3D terrain visuals</li><li>Bivariate mapping</li><li>Technical reporting</li></ul>
         </div>
         <div class="skill">
           <h3>Domains</h3>
@@ -258,9 +273,22 @@
     </div>
   </section>
 
+  <section id="toolkit">
+    <div class="wrap">
+      <div class="section-head"><h2>Toolkit</h2><span class="num">03</span></div>
+      <div class="tools">
+        <div class="tool-row"><h3>GIS &amp; Cartography</h3><ul><li>ArcGIS Pro</li><li>ArcMap</li><li>QGIS</li></ul></div>
+        <div class="tool-row"><h3>Remote Sensing</h3><ul><li>Google Earth Engine</li><li>ENVI</li><li>PCI Geomatica</li><li>ESA SNAP</li></ul></div>
+        <div class="tool-row"><h3>Code &amp; Statistics</h3><ul><li>Python</li><li>R / RStudio</li><li>SQL</li><li>SPSS</li><li>Excel</li></ul></div>
+        <div class="tool-row"><h3>Data I Work With</h3><ul><li>ASTER</li><li>Sentinel-1 SAR</li><li>Sentinel-2</li><li>Landsat</li><li>SRTM DEM</li><li>Aeromagnetic &amp; radiometric</li></ul></div>
+        <div class="tool-row"><h3>Field</h3><ul><li>GPS field mapping</li><li>Sampling design</li><li>Field data QA/QC</li></ul></div>
+      </div>
+    </div>
+  </section>
+
   <section id="projects">
     <div class="wrap">
-      <div class="section-head"><h2>Featured Projects</h2><span class="num">03</span></div>
+      <div class="section-head"><h2>Featured Projects</h2><span class="num">04</span></div>
 
       <article class="project">
         <a class="plate" href="gold-mineralization.html"><img src="thumb_gold.jpg" alt="Gold mineral potential map, Moro area" loading="lazy" width="506" height="676"></a>
