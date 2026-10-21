@@ -83,7 +83,10 @@
     .card-map img { width: 100%; height: auto; border-radius: 4px; }
     .card-photo { position: absolute; left: 4%; bottom: 4%; width: 52%; background: #fff; padding: 12px 12px 18px; border-radius: 10px; box-shadow: 0 30px 60px -24px rgba(0,0,0,.45); transform: rotate(-5deg); }
     .card-photo .ph { aspect-ratio: 4 / 5; border-radius: 4px; overflow: hidden; background: linear-gradient(150deg, var(--ochre) 0%, var(--terra) 100%); display: grid; place-items: center; }
-    .card-photo .ph img { width: 100%; height: 100%; object-fit: cover; }
+    .card-photo .ph img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .card-photo .ph { position: relative; text-decoration: none; }
+    .card-photo .ph:hover img { transform: scale(1.04); }
+    .li-tag { position: absolute; left: 10px; bottom: 10px; background: #0a66c2; color: #fff; font-weight: 700; font-size: .78rem; padding: .3rem .65rem; border-radius: 999px; box-shadow: 0 6px 16px -6px rgba(0,0,0,.5); }
     .card-photo .ph b { font-family: var(--display); font-weight: 400; font-size: clamp(3rem, 6vw, 4.6rem); color: #fff; }
     .card-photo p { font-family: var(--display); font-size: 1.1rem; text-align: center; margin-top: .6rem; }
     .sticker { position: absolute; right: 4%; bottom: 8%; background: var(--teal); color: #fff; border-radius: 50%; width: 132px; height: 132px; display: grid; place-items: center; text-align: center; font-weight: 800; font-size: .82rem; line-height: 1.25; text-transform: uppercase; letter-spacing: .04em; transform: rotate(-10deg); box-shadow: 0 18px 40px -18px rgba(0,0,0,.5); padding: 1rem; }
@@ -200,6 +203,7 @@
     #contact h2 span { color: var(--ochre); }
     #contact .sub { font-size: 1.15rem; color: rgba(251,246,238,.8); margin: 1.4rem 0 2rem; max-width: 30rem; }
     .contact-photo { background: #fff; padding: 10px 10px 16px; border-radius: 10px; transform: rotate(4deg); box-shadow: 0 30px 60px -24px rgba(0,0,0,.7); }
+    .contact-photo a { display: block; }
     .contact-photo img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 4px; }
     .contact-photo.reveal.in { transform: rotate(4deg); }
     .contact-photo p { color: var(--ink); font-family: var(--display); text-align: center; margin-top: .5rem; font-size: 1.05rem; }
@@ -278,7 +282,7 @@
       <div class="collage">
         <div class="card-map" aria-hidden="true"><img src="thumb_gold.jpg" alt="" width="506" height="676"></div>
         <div class="card-photo">
-          <div class="ph"><img src="photo_halimat.jpg" alt="Halimat Damilola Akanbi" width="800" height="1000"></div>
+          <a class="ph" href="https://www.linkedin.com/in/akanbi-halimah" target="_blank" rel="noopener" title="View my LinkedIn profile"><img src="photo_halimat.jpg" alt="Halimat Damilola Akanbi, view LinkedIn profile" width="800" height="1000"><span class="li-tag">in · View LinkedIn</span></a>
           <p>Ibadan, Nigeria</p>
         </div>
         <div class="sticker" aria-hidden="true"><div><big>M.Tech</big>GIS &amp;<br>Remote Sensing</div></div>
@@ -297,7 +301,7 @@
     <div class="stats">
       <div class="stat reveal"><span class="stat-num">6+</span><span class="stat-label">Domains of practice</span></div>
       <div class="stat reveal"><span class="stat-num">5</span><span class="stat-label">Featured projects</span></div>
-      <div class="stat reveal"><span class="stat-num">2</span><span class="stat-label">Manuscripts in progress</span></div>
+      <div class="stat reveal"><span class="stat-num">3</span><span class="stat-label">Articles under review</span></div>
       <div class="stat reveal"><span class="stat-num">14</span><span class="stat-label">Tools in my kit</span></div>
     </div>
   </div>
@@ -329,7 +333,7 @@
       <h2 class="title">What I <em>do</em></h2>
       <div class="skills">
         <div class="skill reveal"><h3>Geology</h3><ul><li>Structural &amp; lineament mapping</li><li>Hydrothermal alteration</li><li>Mineral prospectivity</li><li>Rock, soil &amp; water sampling</li><li>Airborne geophysics</li></ul></div>
-        <div class="skill reveal"><h3>Spatial Analysis</h3><ul><li>Spatial autocorrelation</li><li>Hotspot analysis</li><li>IDW &amp; kriging</li><li>AHP &amp; Fuzzy AHP</li><li>Suitability modelling</li></ul></div>
+        <div class="skill reveal"><h3>Spatial Analysis</h3><ul><li>Spatial autocorrelation</li><li>Hotspot analysis</li><li>IDW &amp; kriging</li><li>AHP &amp; Fuzzy AHP</li><li>AI &amp; machine learning</li><li>Suitability modelling</li></ul></div>
         <div class="skill reveal"><h3>Remote Sensing</h3><ul><li>Band ratios</li><li>Crosta PCA</li><li>SAR flood mapping</li><li>Lineament extraction</li><li>Multi-year change</li></ul></div>
         <div class="skill reveal"><h3>Cartography</h3><ul><li>Map design &amp; layout</li><li>Topographic base maps</li><li>3D terrain visuals</li><li>Bivariate mapping</li><li>Technical reporting</li></ul></div>
         <div class="skill reveal"><h3>Domains</h3><ul><li>Mineral exploration</li><li>Soil &amp; agriculture</li><li>Disaster risk</li><li>Public health</li><li>Environmental mapping</li></ul></div>
@@ -350,8 +354,8 @@
         <li class="tool reveal"><b class="mark" style="--c:#3b7a3e">PCI</b><span>PCI Geomatica</span></li>
         <li class="tool reveal"><b class="mark" style="--c:#1f4d63">SNAP</b><span>ESA SNAP</span></li>
         <li class="tool reveal"><img src="icon_python.svg" alt="" width="56" height="56" loading="lazy"><span>Python</span></li>
-        <li class="tool reveal"><img src="icon_r.svg" alt="" width="56" height="56" loading="lazy"><span>R</span></li>
-        <li class="tool reveal"><img src="icon_rstudio.svg" alt="" width="56" height="56" loading="lazy"><span>RStudio</span></li>
+        <li class="tool reveal"><img src="icon_r.svg" alt="" width="56" height="56" loading="lazy"><span>R / RStudio</span></li>
+        <li class="tool reveal"><img src="icon_jupyter.svg" alt="" width="56" height="56" loading="lazy"><span>JupyterLab</span></li>
         <li class="tool reveal"><b class="mark" style="--c:#161412">SQL</b><span>SQL</span></li>
         <li class="tool reveal"><img src="icon_spss.svg" alt="" width="56" height="56" loading="lazy"><span>SPSS</span></li>
         <li class="tool reveal"><b class="mark" style="--c:#2e7d4f">XLS</b><span>Excel</span></li>
@@ -456,7 +460,7 @@
         <p class="sub">Open to research collaborations, consultancy and full-time or remote roles in geology, GIS and spatial data.</p>
         <a href="mailto:akanbihalimah1@gmail.com" class="btn btn-solid" style="background:var(--ochre);border-color:var(--ochre);color:#fff">Email me →</a>
       </div>
-      <figure class="contact-photo reveal"><img src="photo_graduation.jpg" alt="Halimat Akanbi at her M.Tech graduation, FUTA" loading="lazy" width="720" height="720"><p>M.Tech graduation, FUTA</p></figure>
+      <figure class="contact-photo reveal"><a href="https://www.linkedin.com/in/akanbi-halimah" target="_blank" rel="noopener" title="View my LinkedIn profile"><img src="photo_graduation.jpg" alt="Halimat Akanbi at her M.Tech graduation, FUTA, view LinkedIn profile" loading="lazy" width="720" height="720"></a><p>M.Tech graduation, FUTA</p></figure>
       <ul class="contact-list reveal">
         <li><a href="mailto:akanbihalimah1@gmail.com"><small>Email</small><strong>akanbihalimah1@gmail.com</strong></a></li>
         <li><a href="https://www.linkedin.com/in/akanbi-halimah" target="_blank" rel="noopener"><small>LinkedIn</small><strong>Halimat Akanbi</strong></a></li>
