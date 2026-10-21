@@ -1,12 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@400;500;600;700&display=swap');
 /* Shared light theme for project pages. Edit colours here once. */
 :root {
-  --bg: #faf8f4;
-  --surface: #f2eee6;
+  --bg: #fbf6ee;
+  --surface: #f3e9d8;
   --surface2: #ffffff;
   --border: rgba(21,21,21,0.12);
-  --green: #3f7a3a;
-  --gold: #9a6b12;
-  --blue: #2f5f8f;
+  --green: #3b7a3e;
+  --gold: #9a6510;
+  --blue: #23627f;
   --red: #a3432c;
   --text: #151515;
   --text-muted: #3d3d3b;
@@ -19,11 +20,16 @@ nav { background: rgba(250,248,244,0.92) !important; }
 h1, h2, h3 { color: #151515; }
 
 /* Per-project accent, matching the homepage */
-html[data-p="flood"] { --green: #2f5f8f; }
-html[data-p="soil"]  { --green: #8c3f6b; }
+html[data-p="flood"] { --green: #23627f; }
+html[data-p="soil"]  { --green: #8a3d69; }
 
 /* Stronger, more legible text */
 body { font-weight: 400 !important; }
 .prose, .ind-desc, .step-desc, .map-sub, .finding-text { color: #262624 !important; }
 .meta-label, .slabel, .map-type, .section-label, .project-tag, .step-title { font-weight: 500; }
 h1, .section-title { font-weight: 600 !important; }
+
+/* Match homepage typography */
+:root { --font-serif: 'DM Serif Display', Georgia, serif; --font-sans: 'Outfit', system-ui, sans-serif; }
+h1, .section-title, .project-hero h1 { font-family: 'DM Serif Display', Georgia, serif !important; font-weight: 400 !important; }
+nav { background: rgba(251,246,238,0.92) !important; }
