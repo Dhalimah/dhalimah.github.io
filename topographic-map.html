@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Topographic Base Map — Idah-Igalamela | Halimat Akanbi</title>
+  <title>Topographic Base Map: Idah-Igalamela | Halimat Akanbi</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -127,7 +127,10 @@
       .legend-grid { grid-template-columns: 1fr; }
       .findings-grid { grid-template-columns: 1fr; }
     }
+  
+    @media (max-width: 700px) { table { display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; } }
   </style>
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
 
@@ -164,10 +167,10 @@
       <div class="two-col">
         <div class="prose">
           <p>This project involved the production of a <strong>professional-grade topographic base map</strong> for Idah and Igalamela-Odolu Local Government Areas in Kogi State, commissioned by the Institute of Agricultural Research and Training (IAR&T), Obafemi Awolowo University.</p>
-          <p>Topographic base maps are foundational spatial datasets used in land use planning, agricultural research, infrastructure development, and resource management. This map was designed to full cartographic standards — integrating elevation, drainage, road networks, settlements, and key landmarks in a single production-ready output.</p>
+          <p>Topographic base maps are foundational spatial datasets used in land use planning, agricultural research, infrastructure development, and resource management. This map was designed to full cartographic standards: integrating elevation, drainage, road networks, settlements, and key landmarks in a single production-ready output.</p>
         </div>
         <div class="prose">
-          <p>The map covers the two LGAs at a scale of <strong>1:200,000</strong>, with elevation classified into three terrain zones — Low (14–91m), Moderate (91–171m), and High (171–363m) — derived from Digital Elevation Model analysis.</p>
+          <p>The map covers the two LGAs at a scale of <strong>1:200,000</strong>, with elevation classified into three terrain zones, Low (14–91m), Moderate (91–171m) and High (171–363m), derived from Digital Elevation Model analysis.</p>
           <p>The final layout includes <strong>dual inset maps</strong> providing national and state-level locational context, a comprehensive legend, contour lines at 50m intervals, and a full road hierarchy from major roads down to footpaths. The map was produced in ArcGIS Pro and ArcMap to IAR&T institutional standards.</p>
         </div>
       </div>
@@ -180,7 +183,7 @@
       <div class="section-label">Output</div>
       <h2 class="section-title">The topographic base map</h2>
       <div class="map-full">
-        <img src="topo_map_idah.jpg" alt="Topographic Base Map — Idah and Igalamela-Odolu, Kogi State" />
+        <img src="topo_map_idah.jpg" alt="Topographic Base Map: Idah and Igalamela-Odolu, Kogi State" />
         <div class="map-caption">
           <div class="map-caption-title">Idah and Igalamela-Odolu Topographic Base Map</div>
           <div class="map-caption-meta">Scale 1:200,000 · GCS WGS 1984 · Author: Akanbi Halimat Damilola · IAR&T</div>
@@ -217,7 +220,7 @@
           <div class="legend-swatch" style="background: linear-gradient(to right, #c0392b, #555, #999, #ccc);"></div>
           <div class="legend-cat">Road Network</div>
           <div class="legend-name">4-Level Hierarchy</div>
-          <p class="legend-desc">Full road classification: Major Roads, Minor Roads, Residential Roads, and Footpaths — enabling infrastructure planning and accessibility analysis across the study area.</p>
+          <p class="legend-desc">Full road classification: Major Roads, Minor Roads, Residential Roads, and Footpaths, enabling infrastructure planning and accessibility analysis across the study area.</p>
         </div>
         <div class="legend-card">
           <div class="legend-swatch" style="background: #6ddba0;"></div>
@@ -276,7 +279,7 @@
       <div class="findings-grid">
         <div class="finding-card">
           <span class="finding-num">Terrain</span>
-          <p class="finding-text">The elevation analysis reveals a clear terrain gradient — low-lying riverine areas along the Niger River corridor in the west rising to upland zones reaching 363m in the eastern portions of Igalamela-Odolu, critical for agricultural suitability and flood risk assessment.</p>
+          <p class="finding-text">The elevation analysis reveals a clear terrain gradient: low-lying riverine areas along the Niger River corridor in the west rising to upland zones reaching 363m in the eastern portions of Igalamela-Odolu, critical for agricultural suitability and flood risk assessment.</p>
         </div>
         <div class="finding-card">
           <span class="finding-num">Network</span>
@@ -284,7 +287,7 @@
         </div>
         <div class="finding-card">
           <span class="finding-num">Reserves</span>
-          <p class="finding-text">Two forest reserves — Adoru Forest Reserve and Southern Adoru Forest Reserve — are clearly delineated within the study area, providing spatial reference for land use planning and conservation boundary management.</p>
+          <p class="finding-text">Two forest reserves (Adoru Forest Reserve and Southern Adoru Forest Reserve) are clearly delineated within the study area, providing spatial reference for land use planning and conservation boundary management.</p>
         </div>
         <div class="finding-card">
           <span class="finding-num">Standard</span>

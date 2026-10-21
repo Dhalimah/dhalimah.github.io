@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Orogenic Gold Mineralization — Moro Area | Halimat Akanbi</title>
+  <title>Orogenic Gold Mineralization: Moro Area | Halimat Akanbi</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -113,7 +113,10 @@
       .stats-row, .workflow { grid-template-columns: repeat(2, 1fr); }
       .findings-grid { grid-template-columns: 1fr; }
     }
+  
+    @media (max-width: 700px) { table { display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; } }
   </style>
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
 
@@ -128,7 +131,7 @@
       <div class="project-tag">Mineral Exploration · Remote Sensing · Structural Geology</div>
       <h1>Orogenic Gold Mineralization<br><em>Moro Area, Kwara State, Nigeria</em></h1>
       <div class="project-meta-strip">
-        <div class="meta-item"><span class="meta-label">Study Area</span><span class="meta-value">Moro LGA, Kwara State — Nigerian Schist Belt</span></div>
+        <div class="meta-item"><span class="meta-label">Study Area</span><span class="meta-value">Moro LGA, Kwara State: Nigerian Schist Belt</span></div>
         <div class="meta-item"><span class="meta-label">Primary Sensor</span><span class="meta-value">ASTER Multispectral + Sentinel-1 SAR</span></div>
         <div class="meta-item"><span class="meta-label">Methods</span><span class="meta-value">Band Ratio, Crosta PCA, Lineament Analysis</span></div>
         <div class="meta-item"><span class="meta-label">Output</span><span class="meta-value">Manuscript in Preparation</span></div>
@@ -153,8 +156,8 @@
           <p>This study applied <strong>ASTER multispectral imagery</strong> and <strong>Sentinel-1 SAR data</strong> to map hydrothermal alteration zones and lineament networks across the Moro study area. Both band ratio and Principal Component Analysis (PCA) techniques were applied independently and cross-validated to ensure robust identification of alteration assemblages.</p>
         </div>
         <div class="prose">
-          <p>The alteration assemblages targeted — <strong>argillic, propylitic, phyllic, alunite, and iron oxide</strong> — represent the diagnostic hydrothermal footprint of orogenic gold systems. Their spatial distribution, in combination with structural lineament density from both surface and sub-surface analysis, defines the prospectivity framework for the study area.</p>
-          <p>The integration of optical remote sensing (ASTER) with SAR-derived structural data (Sentinel-1) enables a multi-layer evidence approach that is more robust than either dataset alone — a methodology gaining traction in low-exposure terrains where field access is limited.</p>
+          <p>The alteration assemblages targeted (<strong>argillic, propylitic, phyllic, alunite, and iron oxide</strong>) represent the diagnostic hydrothermal footprint of orogenic gold systems. Their spatial distribution, in combination with structural lineament density from both surface and sub-surface analysis, defines the prospectivity framework for the study area.</p>
+          <p>The integration of optical remote sensing (ASTER) with SAR-derived structural data (Sentinel-1) enables a multi-layer evidence approach that is more robust than either dataset alone: a methodology gaining traction in low-exposure terrains where field access is limited.</p>
         </div>
       </div>
 
@@ -187,13 +190,13 @@
     </div>
   </div>
 
-  <!-- HYDROTHERMAL ALTERATION — BAND RATIO -->
+  <!-- HYDROTHERMAL ALTERATION: BAND RATIO -->
   <div class="content-section surface">
     <div class="content-inner">
-      <div class="section-label">Results — Band Ratio</div>
+      <div class="section-label">Results: Band Ratio</div>
       <h2 class="section-title">Hydrothermal alteration zones</h2>
       <div class="prose" style="margin-bottom:1.5rem;">
-        <p>Five hydrothermal alteration assemblages were mapped using ASTER band ratio indices. High-value (red/warm) pixels indicate zones of elevated alteration intensity — the primary targets for further investigation. The Fala area in the northeast and the Oloko Nka–Sama corridor in the south show consistent elevation across multiple alteration indices, suggesting genuine hydrothermal activity rather than spectral artefacts.</p>
+        <p>Five hydrothermal alteration assemblages were mapped using ASTER band ratio indices. High-value (red/warm) pixels indicate zones of elevated alteration intensity: the primary targets for further investigation. The Fala area in the northeast and the Oloko Nka–Sama corridor in the south show consistent elevation across multiple alteration indices, suggesting genuine hydrothermal activity rather than spectral artefacts.</p>
       </div>
       <div class="maps-grid-3">
         <div class="map-card">
@@ -201,7 +204,7 @@
           <div class="map-caption">
             <div class="map-type">Band Ratio</div>
             <div class="map-title">Argillic Alteration</div>
-            <div class="map-sub">ASTER bands — Clay mineral mapping · Range: 1.12–2.79</div>
+            <div class="map-sub">ASTER bands: Clay mineral mapping · Range: 1.12–2.79</div>
           </div>
         </div>
         <div class="map-card">
@@ -245,16 +248,16 @@
   <!-- PCA MAPS -->
   <div class="content-section">
     <div class="content-inner">
-      <div class="section-label">Results — Crosta PCA</div>
+      <div class="section-label">Results: Crosta PCA</div>
       <h2 class="section-title">Principal Component Analysis validation</h2>
       <div class="prose" style="margin-bottom:1.5rem;">
-        <p>The Crosta PCA technique was applied independently to argillic and propylitic alteration assemblages. The PC3 components were selected based on eigenvector loading analysis — high positive loadings in PC3 identify pixels dominated by the target mineral assemblage. The spatial correlation between PCA outputs and band ratio maps confirms the robustness of the alteration identification and reduces the likelihood of false positives.</p>
+        <p>The Crosta PCA technique was applied independently to argillic and propylitic alteration assemblages. The PC3 components were selected based on eigenvector loading analysis: high positive loadings in PC3 identify pixels dominated by the target mineral assemblage. The spatial correlation between PCA outputs and band ratio maps confirms the robustness of the alteration identification and reduces the likelihood of false positives.</p>
       </div>
       <div class="maps-grid-2">
         <div class="map-card tall">
           <img src="gold_argillic_pca.jpg" alt="Argillic Alteration PCA PC3" />
           <div class="map-caption">
-            <div class="map-type">Crosta PCA — PC3</div>
+            <div class="map-type">Crosta PCA: PC3</div>
             <div class="map-title">Argillic Alteration (PCA)</div>
             <div class="map-sub">High positive values (red/orange) confirm clay-dominated alteration zones · Range: -0.09 to 0.45</div>
           </div>
@@ -262,7 +265,7 @@
         <div class="map-card tall">
           <img src="gold_propylitic_pca.jpg" alt="Propylitic Alteration PCA PC3" />
           <div class="map-caption">
-            <div class="map-type">Crosta PCA — PC3</div>
+            <div class="map-type">Crosta PCA: PC3</div>
             <div class="map-title">Propylitic Alteration (PCA)</div>
             <div class="map-sub">Eastern corridor shows strong propylitic signature consistent with band ratio results · Range: -0.15 to 0.10</div>
           </div>
@@ -277,7 +280,7 @@
       <div class="section-label">Structural Analysis</div>
       <h2 class="section-title">Lineament mapping & structural framework</h2>
       <div class="prose" style="margin-bottom:1.5rem;">
-        <p>Surface lineaments were digitized from Sentinel-1 SAR imagery and validated against the aeromagnetic sub-surface lineament pattern. The rose diagram reveals a dominant <strong>NE-SW trending lineament system</strong>, consistent with the regional structural fabric of the Nigerian Schist Belt. NW-SE trending cross-structures are also present and are of particular interest as intersection zones — areas where two structural trends intersect are classic loci for orogenic gold trapping.</p>
+        <p>Surface lineaments were digitized from Sentinel-1 SAR imagery and validated against the aeromagnetic sub-surface lineament pattern. The rose diagram reveals a dominant <strong>NE-SW trending lineament system</strong>, consistent with the regional structural fabric of the Nigerian Schist Belt. NW-SE trending cross-structures are also present and are of particular interest as intersection zones: areas where two structural trends intersect are classic loci for orogenic gold trapping.</p>
       </div>
       <div class="lineament-wrap">
         <div class="map-card">
@@ -293,7 +296,7 @@
           <div class="map-caption">
             <div class="map-type">Density Analysis</div>
             <div class="map-title">Combined Surface & Sub-surface Lineament Density</div>
-            <div class="map-sub">High density zones (red, 3.3–4.1) at Iwa and Alagbede Forest Reserve — priority structural targets</div>
+            <div class="map-sub">High density zones (red, 3.3–4.1) at Iwa and Alagbede Forest Reserve: priority structural targets</div>
           </div>
         </div>
       </div>
@@ -306,11 +309,11 @@
       <div class="section-label">Final Output</div>
       <h2 class="section-title">Mineral prospectivity map</h2>
       <div class="prose" style="margin-bottom:1.5rem;">
-        <p>The final Mineral Prospectivity Map (MPM) was produced by integrating four evidence layers — hydrothermal alteration, structural control, heat source, and gold/ligand source — using <strong>Fuzzy AHP weighted overlay</strong>. The map classifies the study area into four prospectivity zones: Very Low, Low, Moderate, and High. The overlay with geology and lineaments confirms that High prospectivity zones align with structural intersections and specific rock units, particularly the Migmatite Gneiss and Quartzite Schist units hosting the most significant alteration signatures.</p>
+        <p>The final Mineral Prospectivity Map (MPM) was produced by integrating four evidence layers (hydrothermal alteration, structural control, heat source, and gold/ligand source) using <strong>Fuzzy AHP weighted overlay</strong>. The map classifies the study area into four prospectivity zones: Very Low, Low, Moderate, and High. The overlay with geology and lineaments confirms that High prospectivity zones align with structural intersections and specific rock units, particularly the Migmatite Gneiss and Quartzite Schist units hosting the most significant alteration signatures.</p>
       </div>
       <div class="maps-grid-2">
         <div class="map-card tall">
-          <img src="gold_mpm_standalone.jpg" alt="Mineral Prospectivity Map — Moro Area" />
+          <img src="gold_mpm_standalone.jpg" alt="Mineral Prospectivity Map: Moro Area" />
           <div class="map-caption">
             <div class="map-type">Final MPM</div>
             <div class="map-title">Mineral Prospectivity Map</div>
@@ -373,7 +376,7 @@
       <div class="findings-grid">
         <div class="finding-card">
           <span class="finding-num">Fala NE</span>
-          <p class="finding-text">The Fala area in the northeast consistently shows elevated alteration signatures across argillic, propylitic, and iron oxide indices — confirmed by both band ratio and PCA methods. This spatial convergence across multiple alteration assemblages is a strong indicator of genuine hydrothermal activity.</p>
+          <p class="finding-text">The Fala area in the northeast consistently shows elevated alteration signatures across argillic, propylitic, and iron oxide indices, confirmed by both band ratio and PCA methods. This spatial convergence across multiple alteration assemblages is a strong indicator of genuine hydrothermal activity.</p>
         </div>
         <div class="finding-card">
           <span class="finding-num">NE-SW</span>
@@ -385,7 +388,7 @@
         </div>
         <div class="finding-card">
           <span class="finding-num">PCA confirms</span>
-          <p class="finding-text">Independent Crosta PCA analysis validated the band ratio results spatially — high-value PC3 pixels align with high band ratio zones for both argillic and propylitic assemblages. This cross-validation reduces spectral confusion risk and strengthens confidence in the alteration map as a genuine geological signal.</p>
+          <p class="finding-text">Independent Crosta PCA analysis validated the band ratio results spatially: high-value PC3 pixels align with high band ratio zones for both argillic and propylitic assemblages. This cross-validation reduces spectral confusion risk and strengthens confidence in the alteration map as a genuine geological signal.</p>
         </div>
       </div>
     </div>

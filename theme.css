@@ -1,0 +1,23 @@
+/* Shared light theme for project pages. Edit colours here once. */
+:root {
+  --bg: #faf8f4;
+  --surface: #f2eee6;
+  --surface2: #ffffff;
+  --border: rgba(21,21,21,0.12);
+  --green: #3f7a3a;
+  --gold: #9a6b12;
+  --blue: #2f5f8f;
+  --red: #a3432c;
+  --text: #151515;
+  --text-muted: #3d3d3b;
+  --text-dim: #6b6a66;
+}
+body { -webkit-font-smoothing: antialiased; }
+body::before { display: none !important; }
+nav { background: rgba(250,248,244,0.92) !important; }
+.nav-logo, .nav-back { color: #151515 !important; }
+h1, h2, h3 { color: #151515; }
+
+/* Per-project accent, matching the homepage */
+html[data-p="flood"] { --green: #2f5f8f; }
+html[data-p="soil"]  { --green: #8c3f6b; }

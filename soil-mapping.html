@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-p="soil">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Soil Nutrient & Suitability Mapping — Ikere, Oyo State | Halimat Akanbi</title>
+  <title>Soil Nutrient & Suitability Mapping: Ikere, Oyo State | Halimat Akanbi</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -110,7 +110,10 @@
       .stats-row { grid-template-columns: repeat(2, 1fr); }
       .findings-grid { grid-template-columns: 1fr; }
     }
+  
+    @media (max-width: 700px) { table { display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; } }
   </style>
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
 
@@ -127,7 +130,7 @@
       <div class="project-meta-strip">
         <div class="meta-item"><span class="meta-label">Study Area</span><span class="meta-value">Ikere Area, Oyo State</span></div>
         <div class="meta-item"><span class="meta-label">Scale</span><span class="meta-value">1:50,000</span></div>
-        <div class="meta-item"><span class="meta-label">Sample Grid</span><span class="meta-value">700m spacing — 139 sample points</span></div>
+        <div class="meta-item"><span class="meta-label">Sample Grid</span><span class="meta-value">700m spacing: 139 sample points</span></div>
         <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">IAR&T, Obafemi Awolowo University</span></div>
         <div class="meta-item"><span class="meta-label">Year</span><span class="meta-value">2025</span></div>
       </div>
@@ -149,11 +152,11 @@
       <div class="two-col">
         <div class="prose">
           <p>This comprehensive land evaluation survey was carried out for IAR&T across the Ikere area of Oyo State to support agricultural planning for a proposed farmland. The study covered approximately <strong>6,770 hectares</strong> sampled at a 700m grid spacing, yielding 139 georeferenced soil sample points.</p>
-          <p>The analysis characterized the soil's physical and chemical properties — nitrogen, phosphorus, potassium, organic carbon, calcium, soil depth, and texture — and translated these into practical land suitability assessments for three priority crops: <strong>maize, rice, and soybean</strong>. An erosion risk assessment and fertility capability classification were also produced.</p>
+          <p>The analysis characterized the soil's physical and chemical properties (nitrogen, phosphorus, potassium, organic carbon, calcium, soil depth, and texture) and translated these into practical land suitability assessments for three priority crops: <strong>maize, rice, and soybean</strong>. An erosion risk assessment and fertility capability classification were also produced.</p>
         </div>
         <div class="prose">
           <p>All spatial interpolation was performed using <strong>Inverse Distance Weighting (IDW)</strong>. IDW was preferred over kriging because it preserves actual measured values at sample locations without over-smoothing, faithfully representing the field reality. Kriging applies statistical smoothing that can mask localized nutrient variability which is agronomically critical for site-specific management decisions.</p>
-          <p>The geological and hydrological context of the study area — dominated by Migmatite with minor occurrences of Fine and Medium-grained Biotite granite, Silicified Sheared rocks, and undifferentiated Schist — directly influences soil parent material and therefore nutrient distribution across the landscape.</p>
+          <p>The geological and hydrological context of the study area (dominated by Migmatite with minor occurrences of Fine and Medium-grained Biotite granite, Silicified Sheared rocks, and undifferentiated Schist) directly influences soil parent material and therefore nutrient distribution across the landscape.</p>
         </div>
       </div>
     </div>
@@ -169,7 +172,7 @@
           <img src="soil_location.jpg" alt="Location Map of Proposed Farmland, Ikere Area" />
           <div class="map-caption">
             <div class="map-type">Location</div>
-            <div class="map-title">Location Map — Proposed Farmland, Ikere Area</div>
+            <div class="map-title">Location Map: Proposed Farmland, Ikere Area</div>
             <div class="map-sub">Elevation: 232–351m · 5 elevation classes · 700m sample grid</div>
           </div>
         </div>
@@ -217,7 +220,7 @@
       <div class="section-label">Soil Nutrients</div>
       <h2 class="section-title">Nutrient distribution maps</h2>
       <div class="prose" style="margin-bottom:1rem;">
-        <p>Five key soil chemical parameters were mapped using IDW interpolation. The results reveal a landscape largely adequate in organic carbon and nitrogen but significantly deficient in available phosphorus — a critical finding for fertilizer management planning.</p>
+        <p>Five key soil chemical parameters were mapped using IDW interpolation. The results reveal a landscape largely adequate in organic carbon and nitrogen but significantly deficient in available phosphorus: a critical finding for fertilizer management planning.</p>
       </div>
 
       <div class="method-box">
@@ -233,7 +236,7 @@
         <tbody>
           <tr><td>Organic Carbon</td><td>High (&gt;1.4%)</td><td>98.11%</td><td>Good soil organic matter status across most of the area</td></tr>
           <tr><td>Total Nitrogen</td><td>High (&gt;0.20%)</td><td>93.97%</td><td>Adequate nitrogen levels; localized deficiencies in 6% of area</td></tr>
-          <tr><td>Available Phosphorus</td><td>Low (3.0–7.0 mg/kg)</td><td>76.79%</td><td>P deficiency widespread — phosphate fertilization recommended</td></tr>
+          <tr><td>Available Phosphorus</td><td>Low (3.0–7.0 mg/kg)</td><td>76.79%</td><td>P deficiency widespread: phosphate fertilization recommended</td></tr>
           <tr><td>Exchangeable Potassium</td><td>Moderate (0.30–0.60 cmol/kg)</td><td>65.13%</td><td>Moderate K status; supplementation needed in 34% of area</td></tr>
           <tr><td>Exchangeable Calcium</td><td>Moderate (5.19–8.41 cmol/kg)</td><td>85%</td><td>Generally adequate; low Ca patches in western portions</td></tr>
         </tbody>
@@ -305,7 +308,7 @@
           <div class="map-caption">
             <div class="map-type">FCC System</div>
             <div class="map-title">Fertility Capability Classification</div>
-            <div class="map-sub">7 FCC classes — L, L", L"R, L'(15%), L/LR, LiR, Lig</div>
+            <div class="map-sub">7 FCC classes: L, L", L"R, L'(15%), L/LR, LiR, Lig</div>
           </div>
         </div>
       </div>
@@ -393,7 +396,7 @@
         </div>
         <div class="finding-card">
           <span class="finding-num">22.83%</span>
-          <p class="finding-text">Over a fifth of the study area — 1,545 hectares — falls in the High erosion risk class based on K factor analysis. These areas, concentrated in the steeper portions of the study area, require soil conservation measures before intensive cultivation begins.</p>
+          <p class="finding-text">Over a fifth of the study area (1,545 hectares) falls in the High erosion risk class based on K factor analysis. These areas, concentrated in the steeper portions of the study area, require soil conservation measures before intensive cultivation begins.</p>
         </div>
         <div class="finding-card">
           <span class="finding-num">Rice East</span>
@@ -401,7 +404,7 @@
         </div>
         <div class="finding-card">
           <span class="finding-num">Migmatite</span>
-          <p class="finding-text">Migmatite dominates the geology of the study area, which is reflected in the predominantly Ferric and Chromic Lixisol soil types. The strong geological-soil relationship confirms that parent material is the primary control on spatial nutrient patterns — a finding that improves interpretability of the nutrient maps.</p>
+          <p class="finding-text">Migmatite dominates the geology of the study area, which is reflected in the predominantly Ferric and Chromic Lixisol soil types. The strong geological-soil relationship confirms that parent material is the primary control on spatial nutrient patterns: a finding that improves interpretability of the nutrient maps.</p>
         </div>
       </div>
     </div>
