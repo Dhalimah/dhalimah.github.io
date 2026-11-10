@@ -68,7 +68,13 @@
           <p><b>How the zones were made.</b> A published 7-zone map was georeferenced and digitised. FAO GAEZ v4 length of growing period (1981&ndash;2010) was sampled along each boundary. Four boundaries follow it closely (about 97, 157, 218 and 283 days) and were redrawn from the growing-period contours. The Northern/Southern Guinea Savanna boundary does not follow growing period, so it is kept as published. Uplands (Jos Plateau; Mambilla and Obudu) come from the tropic-cool classes of the HarvestChoice AEZ layer. Lake Chad is mapped as open water, not as a zone.</p>
           <p><b>How the numbers were calculated.</b> Zones were intersected with state boundaries and areas measured in Africa Albers Equal Area. Percentages come from these spatial intersections, not from counts of LGAs.</p>
           <p><b>Limits.</b> Boundaries are generalised to a few kilometres and zones are gradients, not walls. Treat the map as regional, not field-scale.</p>
-          <p><b>Sources.</b> FAO/IIASA GAEZ v4. Harvest Choice; International Food Policy Research Institute (IFPRI), 2015, "Agro-Ecological Zones for Africa South of the Sahara", <a href="https://doi.org/10.7910/DVN/M7XIUB" target="_blank" rel="noopener">doi.org/10.7910/DVN/M7XIUB</a>, Harvard Dataverse, V3. Natural Earth. Coordinate system: WGS 84 (EPSG:4326).</p>
+          <p><b>Sources.</b></p><ol style="margin:0 0 8px;padding-left:18px">
+          <li>A published agro-ecological zone map of Nigeria (7-zone scheme), digitised as the starting point. The copy used carried no source credit.</li>
+          <li>FAO and IIASA, Global Agro-Ecological Zones v4 (GAEZ v4), total number of growing period days, 1981&ndash;2010, CRU TS3.2. <a href="https://gaez.fao.org/pages/data-viewer" target="_blank" rel="noopener">gaez.fao.org</a>. Documentation: Fischer et al. (2021), FAO, Rome, <a href="https://doi.org/10.4060/cb4744en" target="_blank" rel="noopener">doi.org/10.4060/cb4744en</a>.</li>
+          <li>Harvest Choice; International Food Policy Research Institute (IFPRI), 2015, "Agro-Ecological Zones for Africa South of the Sahara", <a href="https://doi.org/10.7910/DVN/M7XIUB" target="_blank" rel="noopener">doi.org/10.7910/DVN/M7XIUB</a>, Harvard Dataverse, V3. Used for the upland zones.</li>
+          <li>GRID3 Nigeria national and state boundaries.</li>
+          <li>Natural Earth (rivers and neighbouring countries).</li></ol>
+          <p>Coordinate system: WGS 84 (EPSG:4326).</p>
           <p><b>Data.</b> The shapefile and GeoPackage are available on request.</p>
           <p>Map by Halimat Akanbi &middot; November 2026</p>
         </div>
@@ -94,7 +100,7 @@
             zoomControl:false, maxZoom:11, minZoom:5, maxBounds:[[0,-3],[18,21]]
         }).fitBounds([[4.2,2.6],[13.9,14.7]]);
         var hash = new L.Hash(map);
-        map.attributionControl.setPrefix('Data: FAO GAEZ v4; HarvestChoice/IFPRI (2015); Natural Earth &middot; <a href="https://github.com/qgis2web/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        map.attributionControl.setPrefix('Data: FAO GAEZ v4; HarvestChoice/IFPRI (2015); GRID3; Natural Earth &middot; <a href="https://github.com/qgis2web/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         L.Popup.prototype.options.autoPanPaddingTopLeft=L.point(10,110);
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         // remove popup's row if "visible-with-data"
